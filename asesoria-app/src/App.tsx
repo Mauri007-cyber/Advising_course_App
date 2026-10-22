@@ -4,6 +4,8 @@ import { Shell } from "./components/Shell";
 import { Dashboard } from "./pages/Dashboard";
 import { ModulePage } from "./pages/ModulePage";
 import { LessonPage } from "./pages/LessonPage";
+import { ExamPage } from "./pages/ExamPage";
+import { Achievements } from "./pages/Achievements";
 import { Tools } from "./pages/Tools";
 import { Settings } from "./pages/Settings";
 
@@ -20,6 +22,8 @@ export function App() {
   let page = <Dashboard />;
   if (kind === "m") page = <ModulePage id={id} />;
   else if (kind === "l") page = <LessonPage id={id} />;
+  else if (kind === "e") page = <ExamPage key={id} id={id} />;
+  else if (kind === "logros") page = <Achievements />;
   else if (kind === "herramientas") page = <Tools />;
   else if (kind === "ajustes") page = <Settings />;
 
