@@ -6,6 +6,8 @@ import { ModulePage } from "./pages/ModulePage";
 import { LessonPage } from "./pages/LessonPage";
 import { ExamPage } from "./pages/ExamPage";
 import { Achievements } from "./pages/Achievements";
+import { ReviewPage } from "./pages/ReviewPage";
+import { AccountPage } from "./pages/AccountPage";
 import { Tools } from "./pages/Tools";
 import { Settings } from "./pages/Settings";
 
@@ -24,6 +26,8 @@ export function App() {
   else if (kind === "l") page = <LessonPage id={id} />;
   else if (kind === "e") page = <ExamPage key={id} id={id} />;
   else if (kind === "logros") page = <Achievements />;
+  else if (kind === "repaso") page = <ReviewPage />;
+  else if (kind === "cuenta") page = <AccountPage />;
   else if (kind === "herramientas") page = <Tools />;
   else if (kind === "ajustes") page = <Settings />;
 

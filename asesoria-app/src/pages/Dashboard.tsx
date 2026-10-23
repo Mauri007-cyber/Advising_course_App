@@ -1,9 +1,10 @@
 import { allLessons, findLesson, modules } from "../data/modules";
 import { href } from "../lib/router";
 import { useStore } from "../lib/store";
-import { badges, currentStreak, moduleStatus, nextLesson, rankInfo } from "../lib/game";
+import { badges, currentStreak, dayKey, moduleStatus, nextLesson, rankInfo } from "../lib/game";
 import { Progress } from "../components/Progress";
 import { Icon } from "../components/Icon";
+import { dueIds } from "../lib/srs";
 
 export function Dashboard() {
   const s = useStore();
@@ -12,6 +13,7 @@ export function Dashboard() {
   const count = allLessons.filter((l) => s.done[l.id]).length;
   const next = nextLesson(s);
   const pending = Object.values(s.review).flat();
+  const due = dueIds(s.srs, dayKey()).length;
 
   return (
     <>
@@ -42,6 +44,12 @@ export function Dashboard() {
               <li key={id}><a href={href(`/l/${id}`)}>{id} {findLesson(id)?.title}</a></li>
             ))}
           </ul>
+        </div>
+      )}
+
+      {due > 0 && (
+        <div className="alert">
+          <strong>Tienes {due} tarjeta(s) de repaso para hoy.</strong> Diez minutos ahora fijan lo aprendido. <a href={href("/repaso")}>Empezar repaso</a>
         </div>
       )}
 

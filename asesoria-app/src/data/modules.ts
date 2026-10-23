@@ -18,7 +18,7 @@ export const modules: Module[] = [
     summary: "Formas jurídicas, alta censal y Seguridad Social.",
     lessons: [
       { id: "1.1", title: "Formas jurídicas: autónomo o sociedad limitada" },
-      { id: "1.2", title: "Alta censal e IAE: modelos 036 y 037" },
+      { id: "1.2", title: "Alta censal: el modelo 036 y la actividad" },
       { id: "1.3", title: "Encuadramiento: RETA o Régimen General" },
     ],
   },
@@ -27,12 +27,15 @@ export const modules: Module[] = [
     title: "Laboral, personal y empleabilidad",
     summary: "Contratos, nóminas, seguros sociales, extinción y salida profesional.",
     lessons: [
-      { id: "2.1", title: "Contratación laboral y alta en TGSS" },
+      { id: "2.1", title: "Modalidades de contrato tras la reforma laboral de 2021" },
       { id: "2.2", title: "La nómina explicada fácil" },
-      { id: "2.3", title: "Seguros sociales: RLC, RNC y SILTRA" },
-      { id: "2.4", title: "Bajas, IT, permisos y nacimiento" },
+      { id: "2.3", title: "Seguros sociales: RLC, RNT y Sistema RED" },
+      { id: "2.4", title: "Incapacidad temporal: baja, prestación y duración" },
       { id: "2.5", title: "Despidos, finiquitos e indemnizaciones" },
       { id: "2.6", title: "Empleabilidad: CV, LinkedIn y búsqueda de empleo" },
+      { id: "2.7", title: "Afiliación y alta de trabajadores en la Seguridad Social" },
+      { id: "2.8", title: "Permisos y licencias retribuidas" },
+      { id: "2.9", title: "Nacimiento y cuidado del menor" },
     ],
   },
   {

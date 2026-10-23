@@ -7,8 +7,10 @@ import { Toasts } from "./Toasts";
 
 const links = [
   { to: "/", label: "Inicio" },
+  { to: "/repaso", label: "Repaso" },
   { to: "/logros", label: "Logros" },
   { to: "/herramientas", label: "Herramientas" },
+  { to: "/cuenta", label: "Cuenta" },
   { to: "/ajustes", label: "Ajustes" },
 ];
 

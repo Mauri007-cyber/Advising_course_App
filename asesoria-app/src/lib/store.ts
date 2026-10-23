@@ -26,6 +26,8 @@ export interface State {
   failed: Record<string, number>;
   review: Record<string, string[]>;
   attempts: Attempt[];
+  srs: Record<string, { box: number; due: string }>;
+  modified: number;
   xp: number;
   streak: Streak;
   theme: Theme;
@@ -44,6 +46,8 @@ const initial: State = {
   failed: {},
   review: {},
   attempts: [],
+  srs: {},
+  modified: 0,
   xp: 0,
   streak: { count: 0, last: "", grace: "" },
   theme: "auto",
@@ -62,7 +66,7 @@ function numMap(x: unknown) {
   return out;
 }
 
-function sanitize(raw: unknown): State | null {
+export function sanitizeState(raw: unknown): State | null {
   if (!isObj(raw) || (raw.v !== 1 && raw.v !== 2)) return null;
 
   const review: Record<string, string[]> = {};
@@ -82,6 +86,15 @@ function sanitize(raw: unknown): State | null {
     }
   }
 
+  const srs: State["srs"] = {};
+  if (isObj(raw.srs)) {
+    for (const [k, v] of Object.entries(raw.srs)) {
+      if (safe(k) && isObj(v) && typeof v.box === "number" && v.box >= 1 && v.box <= 5 && dateStr(v.due)) {
+        srs[k] = { box: Math.floor(v.box), due: dateStr(v.due) };
+      }
+    }
+  }
+
   const st = isObj(raw.streak) ? raw.streak : {};
   return {
     v: 2,
@@ -91,6 +104,8 @@ function sanitize(raw: unknown): State | null {
     failed: numMap(raw.failed),
     review,
     attempts,
+    srs,
+    modified: nat(raw.modified),
     xp: nat(raw.xp),
     streak: { count: nat(st.count), last: dateStr(st.last), grace: dateStr(st.grace) },
     theme: THEMES.includes(raw.theme as Theme) ? (raw.theme as Theme) : initial.theme,
@@ -101,7 +116,7 @@ function sanitize(raw: unknown): State | null {
 function load(): State {
   try {
     const raw = localStorage.getItem(KEY);
-    return (raw && sanitize(JSON.parse(raw))) || initial;
+    return (raw && sanitizeState(JSON.parse(raw))) || initial;
   } catch {
     return initial;
   }
@@ -118,7 +133,7 @@ export const subscribe = (fn: () => void) => {
 };
 
 export function setState(patch: Partial<State>) {
-  state = { ...state, ...patch };
+  state = { ...state, modified: Date.now(), ...patch };
   try {
     localStorage.setItem(KEY, JSON.stringify(state));
   } catch {
@@ -133,9 +148,9 @@ export const exportJson = () => JSON.stringify(state, null, 2);
 
 export function importJson(text: string): boolean {
   try {
-    const next = sanitize(JSON.parse(text));
+    const next = sanitizeState(JSON.parse(text));
     if (!next) return false;
-    setState(next);
+    setState({ ...next, modified: Date.now() });
     return true;
   } catch {
     return false;

@@ -48,6 +48,16 @@ function Content({ c }: { c: LessonContent }) {
           <ul>{c.law.map((l) => <li key={l}>{l}</li>)}</ul>
         </section>
       )}
+      <section>
+        <h2>Fuentes</h2>
+        <ul>
+          {c.sources.map((x) => (
+            <li key={x.url}>
+              <a href={x.url} target="_blank" rel="noopener noreferrer">{x.title}</a> ({x.official ? "fuente oficial" : "análisis profesional"}, consultada el {x.accessed})
+            </li>
+          ))}
+        </ul>
+      </section>
     </div>
   );
 }

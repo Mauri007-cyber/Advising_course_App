@@ -5,7 +5,7 @@ import { hasAnswer, isCorrect, type Answer, type Question } from "../data/questi
 import { href } from "../lib/router";
 import { useStore } from "../lib/store";
 import { moduleStatus, submitExam } from "../lib/game";
-import { buildExam, PASS, type GradeResult } from "../lib/exam";
+import { buildExam, EXAM_SIZE, PASS, type GradeResult } from "../lib/exam";
 import { QuestionView } from "../components/QuestionView";
 import { Progress } from "../components/Progress";
 import { NotFound } from "../components/NotFound";
@@ -61,7 +61,7 @@ export function ExamPage({ id }: { id: string }) {
         {st.unlocked && st.hasExam && (
           <>
             <p className="lead">
-              {Math.min(8, bankOf(id).length)} preguntas · aprobado con un {PASS} % · sin límite de intentos.
+              {Math.min(EXAM_SIZE, bankOf(id).length)} preguntas · aprobado con un {PASS} % · sin límite de intentos.
             </p>
             {repeats > 0 && <p>Incluye {repeats} pregunta(s) que fallaste antes: es la mejor forma de afianzarlas.</p>}
             <p>No verás las respuestas hasta el final. Tómate tu tiempo.</p>

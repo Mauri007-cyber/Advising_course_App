@@ -1,9 +1,10 @@
 import { allLessons, findLesson, findModule, modules } from "../data/modules";
-import { bankOf, lessonContent } from "../data/content";
+import { examReady, lessonContent, questionById } from "../data/content";
 import { isCorrect, type Answer, type Question } from "../data/questions";
 import { grade, PASS, type GradeResult } from "./exam";
 import { getState, setState, type Attempt, type State, type Streak } from "./store";
 import { push, type ToastInput } from "./toast";
+import { applyAnswers, review as reviewCard } from "./srs";
 
 const DAILY_XP = 5;
 
@@ -32,7 +33,7 @@ function weekKey(day: string) {
   return d.toISOString().slice(0, 10);
 }
 
-function bumpStreak(s: Streak, today: string): Streak {
+export function bumpStreak(s: Streak, today: string): Streak {
   if (!s.last) return { ...s, count: 1, last: today };
   const d = diffDays(s.last, today);
   if (d <= 0) return s;
@@ -74,7 +75,7 @@ export const badges: Badge[] = [
   { id: "streak-30", title: "Un mes", desc: "Estudia 30 días seguidos.", test: (s) => s.streak.count >= 30 },
 ];
 
-function commit(next: State, xp: number, main: ToastInput) {
+function commit(next: State, xp: number, main?: ToastInput) {
   const before = getState();
   const today = dayKey();
   const newDay = next.streak.last !== today;
@@ -86,7 +87,7 @@ function commit(next: State, xp: number, main: ToastInput) {
   s = { ...s, badges: { ...s.badges, ...Object.fromEntries(earned.map((b) => [b.id, Date.now()])) } };
   setState(s);
 
-  push({ ...main, body: [main.body, gain ? `+${gain} XP` : ""].filter(Boolean).join(" · ") });
+  if (main) push({ ...main, body: [main.body, gain ? `+${gain} XP` : ""].filter(Boolean).join(" · ") });
   if (newDay && streak.count >= 2) push({ kind: "win", title: `Racha de ${streak.count} días`, body: "Volver cada día es lo que más rinde." });
   earned.forEach((b) => push({ kind: "badge", title: `Insignia: ${b.title}`, body: b.desc }));
   const r0 = rankInfo(before.xp).index;
@@ -104,7 +105,7 @@ export function moduleStatus(s: State, moduleId: string) {
     total,
     lessonsDone,
     pending,
-    hasExam: bankOf(moduleId).length > 0,
+    hasExam: examReady(moduleId),
     unlocked: lessonsDone === total && pending.length === 0,
     passed: mine.some((a) => a.passed),
     best: mine.length ? Math.max(...mine.map((a) => a.score)) : null,
@@ -134,7 +135,7 @@ export function completeLesson(id: string) {
     commit(next, 50, {
       kind: "win",
       title: "¡Módulo completado!",
-      body: bankOf(mod.id).length ? "Ya puedes presentarte al examen." : "Gran trabajo.",
+      body: examReady(mod.id) ? "Ya puedes presentarte al examen." : "Gran trabajo.",
     });
   } else {
     commit(next, 20, { kind: "info", title: "¡Lección completada!", body: "Un paso más hacia el aprobado." });
@@ -142,8 +143,11 @@ export function completeLesson(id: string) {
 }
 
 export function submitCheck(lessonId: string, answers: Record<string, Answer>): GradeResult {
-  const g = grade(lessonContent[lessonId]?.check ?? [], answers);
+  const qs = lessonContent[lessonId]?.check ?? [];
+  const g = grade(qs, answers);
+  const srs = applyAnswers(getState().srs, qs, answers, dayKey());
   if (g.score < PASS) {
+    setState({ srs });
     push({ kind: "warn", title: "Casi lo tienes", body: "Lee las explicaciones y vuelve a intentarlo." });
     return g;
   }
@@ -153,7 +157,7 @@ export function submitCheck(lessonId: string, answers: Record<string, Answer>): 
   const review = withoutReview(s.review, lessonId);
   const left = (review[moduleId] ?? []).length;
   const first = !s.checks[lessonId];
-  commit({ ...s, checks: { ...s.checks, [lessonId]: Date.now() }, review }, (first ? 15 : 0) + (reviewing ? 10 : 0), {
+  commit({ ...s, srs, checks: { ...s.checks, [lessonId]: Date.now() }, review }, (first ? 15 : 0) + (reviewing ? 10 : 0), {
     kind: "win",
     title: reviewing ? "Repaso completado" : "¡Mini-test superado!",
     body: reviewing ? (left ? `Te quedan ${left} lección(es) por repasar.` : "Ya puedes repetir el examen.") : `${g.correct} de ${g.total} correctas.`,
@@ -190,7 +194,8 @@ export function submitExam(moduleId: string, questions: Question[], answers: Rec
   else review[moduleId] = [...new Set(g.wrong.map((q) => q.lessonId))];
 
   const attempt: Attempt = { moduleId, ts: Date.now(), score: g.score, passed, total: g.total, wrong: g.wrong.map((q) => q.id) };
-  const next = { ...s, failed, review, attempts: [...s.attempts, attempt].slice(-100) };
+  const srs = applyAnswers(s.srs, questions, answers, dayKey());
+  const next = { ...s, failed, review, srs, attempts: [...s.attempts, attempt].slice(-100) };
 
   if (passed) {
     commit(next, 100 + (g.score === 100 ? 50 : 0), {
@@ -206,4 +211,11 @@ export function submitExam(moduleId: string, questions: Question[], answers: Rec
     });
   }
   return { g, attempt };
+}
+
+export function recordReview(qid: string, ok: boolean) {
+  const s = getState();
+  if (!questionById[qid]) return;
+  const srs = { ...s.srs, [qid]: reviewCard(s.srs[qid], ok, dayKey()) };
+  commit({ ...s, srs }, ok ? 3 : 0);
 }

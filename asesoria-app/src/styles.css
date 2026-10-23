@@ -174,3 +174,7 @@ fieldset:disabled { opacity: 1; }
   .toast-rank, .toast-badge { animation-duration: 0.5s; }
   progress { transition: all 0.4s; }
 }
+
+.auth { display: grid; gap: 1rem; max-width: 24rem; }
+.auth label { display: grid; gap: 0.3rem; font-weight: 600; }
+.auth input { font: inherit; padding: 0.5rem 0.7rem; border: 2px solid var(--line); border-radius: 6px; background: var(--surface); color: var(--text); }

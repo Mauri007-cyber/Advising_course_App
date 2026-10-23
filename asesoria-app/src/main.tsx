@@ -3,6 +3,7 @@ import { createRoot } from "react-dom/client";
 import { App } from "./App";
 import { getState, subscribe } from "./lib/store";
 import { registerSw } from "./lib/pwa";
+import { initCloud } from "./lib/cloud";
 import "./styles.css";
 
 const applyPrefs = () => {
@@ -13,6 +14,7 @@ const applyPrefs = () => {
 applyPrefs();
 subscribe(applyPrefs);
 registerSw();
+void initCloud();
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
