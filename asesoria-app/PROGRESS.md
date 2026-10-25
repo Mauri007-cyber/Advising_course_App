@@ -72,3 +72,31 @@ Otras unidades del ciclo (no investigadas aun): Gestion de recursos humanos, Ges
 - L2.4 escrita: solo IT (porcentajes 0/60/75, contingencias profesionales 75, quien paga 4-15 empresa y desde 16 mutua/INSS, duracion 365+180 art 169.1.a LGSS). Fuentes secundarias + Servicio Salud CLM. Banco M2 = 27. Contrastar con LGSS arts 169-173 en BOE.
 - Titulo 2.4 reducido a IT. Anadidas lecciones PENDIENTES en modules.ts: 2.7 afiliacion/alta TGSS, 2.8 permisos y licencias (ET art 37), 2.9 nacimiento y cuidado del menor. Bloquean examen M2 hasta tener contenido (examReady).
 - Siguiente: L2.5 extincion (despido objetivo/disciplinario, finiquito, indemnizacion) -> ET arts 49-56 en BOE HTML (usar boe.es/buscar/act.php?id=BOE-A-2015-11430 si aparece en busqueda).
+
+## Actualizacion L2.5
+- L2.5 escrita: despido OBJETIVO (ET 52-53; 20 d/ano tope 12; preaviso 15; improcedente 33 d tope 24 post 12-2-2012, 45 d/42 antes, tope 720). Fuentes secundarias (iberley reproduce art 53, INEAF, Legalitas, PayFit). Plazo 20 dias habiles incluido con aviso. Banco M2 = 34. Contrastar con ET en BOE.
+- Titulo 2.5 reducido; anadida 2.10 Despido disciplinario y finiquito (pendiente, bloquea examen M2).
+- M2 pendientes: 2.6 empleabilidad, 2.7 afiliacion TGSS, 2.8 permisos, 2.9 nacimiento, 2.10 disciplinario/finiquito.
+- Siguiente sugerido: pasar a M3 (fiscal) mientras M2 pendientes se completan despues, o seguir M2. Preguntar al usuario? (el usuario dijo "continuar": seguir orden: 2.6).
+
+## Actualizacion L2.6
+- L2.6 escrita (CV, carta, envio por correo, donde buscar) con fuentes OFICIALES: EURES (Comision Europea) y MITES (Ministerio de Trabajo). Banco M2 = 41.
+- NO verificado: ATS, optimizacion LinkedIn, palabras clave. Anadida 2.11 LinkedIn y presencia profesional (pendiente; fuente: ayuda oficial de LinkedIn).
+- M2 pendientes de contenido: 2.7 afiliacion TGSS, 2.8 permisos, 2.9 nacimiento, 2.10 disciplinario/finiquito, 2.11 LinkedIn. M2 lecciones hechas: 2.1-2.6.
+- Siguiente: ofrecer al usuario continuar M2 pendientes o pasar a M3 fiscal (3.1 IVA). Preferible seguir orden M2 (2.7 afiliacion TGSS).
+
+## REORGANIZACION APROBADA (temario ampliado a 51 lecciones)
+- M1: +1.4 alta/baja autonomo RETA, +1.5 cierre de empresa.
+- M2 (ids renumerados, solo 2.1-2.6 tienen contenido): 2.7 inscripcion empresa y cuenta cotizacion; 2.8 afiliacion/alta trabajadores; 2.9 bajas y variaciones; 2.10 comunicacion contratos (Contrat@/SEPE); 2.11 nomina completa (bases, tipos, retencion IRPF); 2.12 permisos; 2.13 nacimiento y cuidado menor; 2.14 despido disciplinario y finiquito; 2.15 AT y EP; 2.16 jornada, vacaciones, convenios; 2.17 LinkedIn.
+- M3 (renumerado, sin contenido): 3.1 acceso digital; 3.2 IVA; 3.3 IVA avanzado; 3.4 IRPF autonomo; 3.5 retenciones; 3.6 IS; 3.7 renta; 3.8 347/349; 3.9 procedimiento tributario; 3.10 digitalizacion.
+- M4: +4.6 cuentas anuales completas, +4.7 analisis economico-financiero, +4.8 auditoria. M5: +5.5 hoja de encargo/honorarios, +5.6 deontologia, +5.7 antiblanqueo.
+- Objetivo del usuario: completar el MAXIMO de lecciones posibles por chat; consumo de tokens no es problema. Orden: seguir M1 (1.4,1.5) y M2 (2.7...), luego M3...
+
+## Actualizacion lote 1.4, 2.7, 2.8, 2.9, 2.10 (2026-10-25)
+- Herramienta: scripts/add_lesson.py (add(modulo, {id: leccion}, banco)) inserta lecciones/preguntas en src/data/content/mN.ts y registra el modulo nuevo en index.ts. Los lotes se escriben como dicts Python (ver patron en /tmp/batch*.py, no persiste; recrear helpers S,Q,C,T,N).
+- Fecha de consulta ahora: 2026-10-25 (corregida en m1.ts y m2.ts).
+- Hechas: M1 1.1-1.4; M2 2.1-2.10. Pendientes M1: 1.5 cierre de empresa. M2: 2.11 nomina completa, 2.12 permisos, 2.13 nacimiento, 2.14 despido disciplinario/finiquito, 2.15 AT/EP, 2.16 jornada/vacaciones/convenios, 2.17 LinkedIn.
+- HALLAZGO CLAVE verificado en BOE (RD 643/2026, BOE 30-7-2026, vigor 1-8-2026): baja y variaciones de trabajadores por cuenta ajena = 6 dias naturales (antes 3; art 32.3 RD 84/1996). RETA baja sigue 3 dias (manuales TGSS). Tambien: obligacion de comunicar codigo de ocupacion (CNO) en 6 meses; cambios en aplazamientos de deuda SS (art 32-35 RGR): deuda aplazable ya no limitada a doble SMI sino a 1 SMI como causa de denegacion; interes de demora; aplazamiento automatizado. Material para leccion futura de aplazamientos.
+- RD 1424/2002 (BOE): comunicar contratos al servicio de empleo en 10 dias HABILES (otras fuentes decian 10 dias sin precisar: corregido).
+- Banco: M1=27 preguntas, M2=69 aprox. M1 examen se activa al completar 1.5.
+- Siguiente: 1.5 (cierre de empresa: baja censal 036, baja CCC, disolucion y liquidacion, cancelacion registral). Despues 2.11 nomina completa (bases, tipos, IRPF) y asi.

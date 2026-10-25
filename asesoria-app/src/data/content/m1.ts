@@ -1,7 +1,7 @@
 import type { Question } from "../questions";
 import type { LessonContent } from "./types";
 
-const D = "2026-10-23";
+const D = "2026-10-25";
 
 export const m1Lessons: Record<string, LessonContent> = {
   "1.1": {
@@ -278,6 +278,122 @@ export const m1Lessons: Record<string, LessonContent> = {
       },
     ],
   },
+  "1.4": {
+    "intro": "Marta ya sabe que ejercerá como autónoma. Debe decidir cuándo darse de alta en la Seguridad Social y, el día que cierre, cómo darse de baja sin pagar de más. En esta lección ves los plazos y los efectos del alta y de la baja en el RETA.",
+    "steps": [
+      {
+        "title": "Alta en el RETA",
+        "body": [
+          "Debe comunicarse con carácter previo al inicio de la actividad, con una antelación máxima de 60 días naturales.",
+          "Se tramita por internet, sin acudir a la oficina, con el servicio de alta del Sistema RED o en la sede electrónica de la Seguridad Social. La persona debe tener un número de Seguridad Social válido.",
+          "Si el alta se solicita en plazo y la actividad no empieza el día uno del mes, se puede elegir, hasta tres veces al año, que el alta sea efectiva el día uno del mes o el mismo día del inicio de la actividad.",
+          "Si se solicita fuera de plazo, se hace efectiva el día uno del mes en que se inició la actividad."
+        ]
+      },
+      {
+        "title": "Baja en el RETA",
+        "body": [
+          "El plazo para comunicarla es de tres días naturales desde que termina la actividad. También puede tramitarse con antelación, hasta 60 días antes del cese.",
+          "Si se solicita en plazo y el cese no es el último día del mes, se puede elegir, hasta tres veces al año, que los efectos sean los del día del cese o los del último día del mes.",
+          "Las altas y las bajas que superen las tres de un mismo año natural producen efectos el primer o el último día del mes, según corresponda.",
+          "Según una guía universitaria consultada, una baja fuera de plazo es efectiva el último día del mes en que finalizó la actividad."
+        ]
+      },
+      {
+        "title": "Coordinar con Hacienda",
+        "body": [
+          "La baja en el censo de Hacienda se comunica con la declaración censal (modelo 036). La misma guía indica que su fecha debe coincidir con la de la baja en el RETA.",
+          "Para una persona física, el plazo general de baja censal es de un mes (lección 1.2)."
+        ]
+      }
+    ],
+    "example": {
+      "title": "Marta empieza y termina (fechas ilustrativas)",
+      "body": [
+        "Marta empezará el 15 de marzo. Pide el alta antes de esa fecha, dentro del plazo de 60 días.",
+        "Como no empieza el día uno, puede elegir que el alta sea efectiva el 1 de marzo o el 15 de marzo. Es una de las tres elecciones que tiene cada año natural.",
+        "Años después cierra el 20 de junio. Tiene tres días naturales desde el cese: hasta el 23 de junio.",
+        "Si pide la baja en plazo, puede elegir efectos del 20 de junio o del 30 de junio, también dentro de las tres elecciones anuales."
+      ]
+    },
+    "tips": [
+      {
+        "kind": "error",
+        "text": "Pedir el alta cuando ya se ha empezado a trabajar. Debe ser previa y, fuera de plazo, los efectos se retrotraen al día uno del mes de inicio."
+      },
+      {
+        "kind": "consejo",
+        "text": "Antes de elegir la fecha de efectos, comprueba cuántas elecciones anuales se han usado ya ese año."
+      },
+      {
+        "kind": "clave",
+        "text": "Alta: antes del inicio y hasta 60 días antes. Baja: tres días naturales tras el cese."
+      }
+    ],
+    "law": [],
+    "sources": [
+      {
+        "title": "Seguridad Social: alta de trabajador en el RETA (manual)",
+        "url": "https://www.seg-social.es/descarga/es/177778",
+        "accessed": "2026-10-25",
+        "official": true
+      },
+      {
+        "title": "Seguridad Social: baja de trabajador en el RETA (manual)",
+        "url": "https://www.seg-social.es/descarga/es/MBajaRETA",
+        "accessed": "2026-10-25",
+        "official": true
+      },
+      {
+        "title": "Seguridad Social: altas y bajas en RETA, plazos y efectos",
+        "url": "https://www.seg-social.es/descarga/en/229649",
+        "accessed": "2026-10-25",
+        "official": true
+      },
+      {
+        "title": "Universidad Carlos III: guía práctica de baja del autónomo",
+        "url": "https://www.uc3m.es/uc3m/media/uc3m/doc/archivo/doc_guia-practica-de-baja-de-autonomo/guia-practica-de-baja-del-autonomo.pdf",
+        "accessed": "2026-10-25",
+        "official": false
+      }
+    ],
+    "check": [
+      {
+        "id": "c1.4-1",
+        "lessonId": "1.4",
+        "kind": "number",
+        "prompt": "¿Con cuántos días naturales de antelación máxima puede solicitarse el alta en el RETA?",
+        "answer": 60,
+        "explain": "Puede solicitarse hasta 60 días antes del inicio de la actividad.",
+        "unit": "días"
+      },
+      {
+        "id": "c1.4-2",
+        "lessonId": "1.4",
+        "kind": "number",
+        "prompt": "¿Cuántos días naturales tiene el autónomo para comunicar la baja desde que cesa la actividad?",
+        "answer": 3,
+        "explain": "El plazo es de tres días naturales desde el cese.",
+        "unit": "días"
+      },
+      {
+        "id": "c1.4-3",
+        "lessonId": "1.4",
+        "kind": "tf",
+        "prompt": "Si el alta en el RETA se solicita fuera de plazo, se hace efectiva el día uno del mes en que se inició la actividad.",
+        "answer": true,
+        "explain": "Es la regla de los manuales de la TGSS para las altas fuera de plazo."
+      },
+      {
+        "id": "c1.4-4",
+        "lessonId": "1.4",
+        "kind": "tf",
+        "prompt": "Para tramitar el alta en el RETA la persona debe tener un número de Seguridad Social válido.",
+        "answer": true,
+        "explain": "Es un requisito del servicio de alta del Sistema RED."
+      }
+    ]
+  },
 };
 
 export const m1Bank: Question[] = [
@@ -425,5 +541,75 @@ export const m1Bank: Question[] = [
     prompt: "Un autónomo económicamente dependiente (TRADE) recibe, como mínimo, ¿qué porcentaje de sus ingresos de un mismo cliente?",
     answer: 75, unit: "%",
     explain: "El TRADE es quien recibe, al menos, el 75 % de sus ingresos de un mismo cliente.",
+  },
+  {
+    "id": "e1-21",
+    "lessonId": "1.4",
+    "kind": "choice",
+    "prompt": "¿Cuándo debe comunicarse el alta en el RETA?",
+    "answer": 0,
+    "explain": "El alta es previa. No puede presentarse antes de 60 días naturales de antelación.",
+    "options": [
+      "Con carácter previo al inicio de la actividad, hasta 60 días antes",
+      "En el mes siguiente al inicio",
+      "Al presentar la primera factura",
+      "Al cerrar el ejercicio"
+    ]
+  },
+  {
+    "id": "e1-22",
+    "lessonId": "1.4",
+    "kind": "tf",
+    "prompt": "Un autónomo puede solicitar el alta en el RETA después de empezar la actividad sin ninguna consecuencia en los efectos.",
+    "answer": false,
+    "explain": "Fuera de plazo el alta se hace efectiva el día uno del mes de inicio de la actividad."
+  },
+  {
+    "id": "e1-23",
+    "lessonId": "1.4",
+    "kind": "number",
+    "prompt": "¿Cuántas veces al año natural puede elegirse la fecha de efectos del alta o de la baja cuando se solicitan en plazo?",
+    "answer": 3,
+    "explain": "La elección se admite hasta tres veces al año.",
+    "unit": "veces"
+  },
+  {
+    "id": "e1-24",
+    "lessonId": "1.4",
+    "kind": "number",
+    "prompt": "¿Cuántos días naturales desde la finalización de la actividad tiene el autónomo para comunicar la baja?",
+    "answer": 3,
+    "explain": "El plazo es de tres días naturales.",
+    "unit": "días"
+  },
+  {
+    "id": "e1-25",
+    "lessonId": "1.4",
+    "kind": "tf",
+    "prompt": "La baja en el RETA puede tramitarse con antelación, hasta 60 días antes del cese de la actividad.",
+    "answer": true,
+    "explain": "Los manuales de la TGSS lo permiten."
+  },
+  {
+    "id": "e1-26",
+    "lessonId": "1.4",
+    "kind": "choice",
+    "prompt": "Una autónoma cesa el 20 de junio. ¿Hasta qué fecha tiene para comunicar la baja en plazo?",
+    "answer": 0,
+    "explain": "Tres días naturales desde el cese: 21, 22 y 23 de junio.",
+    "options": [
+      "23 de junio",
+      "30 de junio",
+      "20 de julio",
+      "20 de septiembre"
+    ]
+  },
+  {
+    "id": "e1-27",
+    "lessonId": "1.4",
+    "kind": "tf",
+    "prompt": "El alta en el RETA puede tramitarse por internet sin acudir a las oficinas de la Seguridad Social.",
+    "answer": true,
+    "explain": "Existen servicios en el Sistema RED y en la sede electrónica."
   },
 ];
