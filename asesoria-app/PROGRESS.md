@@ -100,3 +100,21 @@ Otras unidades del ciclo (no investigadas aun): Gestion de recursos humanos, Ges
 - RD 1424/2002 (BOE): comunicar contratos al servicio de empleo en 10 dias HABILES (otras fuentes decian 10 dias sin precisar: corregido).
 - Banco: M1=27 preguntas, M2=69 aprox. M1 examen se activa al completar 1.5.
 - Siguiente: 1.5 (cierre de empresa: baja censal 036, baja CCC, disolucion y liquidacion, cancelacion registral). Despues 2.11 nomina completa (bases, tipos, IRPF) y asi.
+
+## Actualizacion L1.5 y L2.11 (2026-10-25)
+- M1 COMPLETO (1.1-1.5, banco 34): examen M1 activo. M2 hechas 2.1-2.11. Total con contenido: 16 de 51.
+- L2.11: Orden PJC/297/2026 (BOE 31-3-2026) leida SOLO via resumenes (UniondeMutuas, Cuatrecasas, Ibermutua, CCOO, laboral-social). Pendiente contrastar con texto BOE y confirmar: tipo desempleo indefinido (no incluido), bases minimas por grupo (solo grupo 1 = 1.424,40), tramos cotizacion adicional solidaridad (no detallados). Retencion IRPF: solo procedimiento (modelo 145, art 88 RIRPF, art 205 LGT, algoritmo AEAT 2026); sin tabla de tipos.
+- L1.5: fuentes secundarias (vLex, Billin, AyudaT, Infoautonomos, RDGRN 2016). Plazo baja 036 en 1 mes tras inscripcion RM: secundaria, con aviso.
+- Siguiente: 2.12 permisos (ET art 37), 2.13 nacimiento y cuidado del menor, 2.14 despido disciplinario y finiquito, 2.15 AT/EP, 2.16 jornada/vacaciones/convenios, 2.17 LinkedIn. Despues M3.
+
+## Actualizacion L2.12 y L2.13 (2026-10-25)
+- M1 verificado: 5 lecciones con contenido, banco 34, examReady('m1') true; test en tests/content.test.ts lo exige.
+- L2.12 permisos (ET 37.3 y 37.9; RDL 5/2023): 15 d naturales matrimonio/pareja de hecho, 5 d hospitalizacion/enfermedad grave hasta 2o grado, 2 d fallecimiento (+2 desplazamiento), 4 d/ano fuerza mayor. Fuentes secundarias (CCOO, USO, Perez-Llorca, UPO). Computo naturales/laborables NO resuelto (declarado). Otros permisos 37.3 (traslado, exa menes, deber publico, lactancia...) NO incluidos.
+- L2.13 nacimiento (RDL 9/2025): 19 sem por progenitor (6 obligatorias + 11 flexibles hasta 12 meses + 2 cuidado hasta 8 anos), monoparental 32, prestacion 100 % BR via INSS. Fuentes secundarias (Cuatrecasas, Forvis Mazars, Deia, El Espanol, CCOO). Partos multiples/discapacidad +1 semana: de CCOO (regimen 16 sem), verificar. Prematuros hasta +13 sem: El Espanol, verificar.
+- Hechas: M1 5/5; M2 13/17 (faltan 2.14 disciplinario/finiquito, 2.15 AT/EP, 2.16 jornada/vacaciones/convenios, 2.17 LinkedIn). Total 18 de 51.
+- Siguiente: 2.14.
+
+## Actualizacion L2.14 + estimacion de duracion (2026-10-25)
+- L2.14 hecha (despido disciplinario ET 54-56, 59.3, finiquito). Fuentes secundarias (Legalitas, INEAF, Loentiendo, Captain Legal, Gestoria247). 19 de 51 lecciones. M2: 14/17 (faltan 2.15 AT/EP, 2.16 jornada/vacaciones/convenios, 2.17 LinkedIn).
+- Medicion real: media ~480 palabras de texto por leccion (+ ejemplo + 4 preguntas de mini-test + 7-9 de banco).
+- Estimacion dada al usuario: 35 min/leccion solo en app, 75 min si se consultan las fuentes. Total curso completo ~40-75 h (~2-4 % de un master de 60 ECTS = 1.500-1.800 h segun el marco).

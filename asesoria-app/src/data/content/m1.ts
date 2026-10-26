@@ -394,6 +394,157 @@ export const m1Lessons: Record<string, LessonContent> = {
       }
     ]
   },
+  "1.5": {
+    "intro": "Cerrar un negocio no es dejar de abrir la persiana: hay que comunicar el cese a Hacienda y a la Seguridad Social, y si es una sociedad, disolverla, liquidarla y extinguirla. En esta lección ves el recorrido completo de Marta si cierra su actividad como autónoma y el de una sociedad limitada.",
+    "steps": [
+      {
+        "title": "Cerrar como autónomo",
+        "body": [
+          "Baja en el RETA: tres días naturales desde el cese (lección 1.4).",
+          "Baja en el censo de Hacienda con la declaración censal, modelo 036 (lección 1.2).",
+          "Si hay trabajadores, sus bajas se presentan en seis días naturales desde el cese (lección 2.9).",
+          "El Sistema RED permite gestionar también la baja del Código de Cuenta de Cotización de la empresa (lección 2.7)."
+        ]
+      },
+      {
+        "title": "Cerrar una sociedad: tres fases",
+        "body": [
+          "El régimen mercantil está en los artículos 360 a 400 de la Ley de Sociedades de Capital.",
+          "Disolución, liquidación y extinción. Cada fase tiene su propia formalidad y no se puede saltar ninguna."
+        ]
+      },
+      {
+        "title": "Disolución",
+        "body": [
+          "Puede deberse a un acuerdo de la junta general o producirse por una causa legal. Entre ellas, el cese en la actividad que constituye el objeto social durante un año.",
+          "La declaración de concurso no es, por sí sola, causa de disolución. La apertura de la fase de liquidación en el concurso sí produce la disolución de pleno derecho.",
+          "La disolución consta en escritura pública y se inscribe en el Registro Mercantil. A partir de ahí, la razón social añade «en liquidación»."
+        ]
+      },
+      {
+        "title": "Liquidación",
+        "body": [
+          "La disolución abre el período de liquidación (art. 371 LSC).",
+          "Salvo que los estatutos o la junta que acuerda la disolución dispongan otra cosa, quienes eran administradores pasan a ser liquidadores (art. 376 LSC).",
+          "Los liquidadores formulan el inventario y el balance a la fecha de la disolución. Antes de repartir nada entre los socios hay que pagar a los acreedores.",
+          "Durante la liquidación, la sociedad sigue sujeta al Impuesto sobre Sociedades."
+        ]
+      },
+      {
+        "title": "Extinción",
+        "body": [
+          "Concluidas las operaciones, los liquidadores someten a la junta general un balance final, un informe completo y un proyecto de división del activo entre los socios.",
+          "Otorgan escritura pública de extinción, que incorpora el balance final y la relación de socios con la cuota que corresponde a cada uno.",
+          "La extinción se completa al cancelarse los asientos de la sociedad en el Registro Mercantil."
+        ]
+      },
+      {
+        "title": "Hacienda y la Seguridad Social en el cierre",
+        "body": [
+          "Se presenta el modelo 036 de baja en el censo. Según fuentes secundarias, la baja en Hacienda debe presentarse en un mes desde la inscripción en el Registro Mercantil. Confirma el plazo en las instrucciones vigentes del modelo.",
+          "Las bajas de los trabajadores y del CCC se tramitan en la Seguridad Social con los plazos de las lecciones 2.7 y 2.9."
+        ]
+      }
+    ],
+    "example": {
+      "title": "El cierre de «Taller Marta S.L.» (supuesto ilustrativo)",
+      "body": [
+        "Los tres socios acuerdan en junta disolver la sociedad. Elevan el acuerdo a escritura pública y lo inscriben en el Registro Mercantil. Desde entonces figura como «Taller Marta S.L. en liquidación».",
+        "Los administradores actúan como liquidadores, valoran los bienes, pagan a los proveedores y cobran los créditos pendientes.",
+        "Si queda patrimonio, lo reparten entre los socios según su participación en el proyecto de división aprobado en junta.",
+        "Otorgan la escritura de extinción con el balance final y la lista de socios, y piden la cancelación en el Registro Mercantil. Después presentan el modelo 036 de baja."
+      ]
+    },
+    "tips": [
+      {
+        "kind": "error",
+        "text": "Pensar que presentar el 036 de baja cierra la sociedad. Es solo un paso: sin disolución, liquidación y extinción en el Registro Mercantil, la sociedad sigue existiendo."
+      },
+      {
+        "kind": "consejo",
+        "text": "Antes de repartir el patrimonio, confirma por escrito que todos los acreedores están pagados o garantizados."
+      },
+      {
+        "kind": "clave",
+        "text": "Tres fases en orden: disolución, liquidación, extinción. La personalidad jurídica termina con la cancelación registral."
+      }
+    ],
+    "law": [
+      "Ley de Sociedades de Capital (RDL 1/2010), arts. 360 a 400"
+    ],
+    "sources": [
+      {
+        "title": "vLex: disolución y liquidación de sociedades de capital",
+        "url": "https://vlex.es/vid/disolucion-liquidacion-394230170",
+        "accessed": "2026-10-25",
+        "official": false
+      },
+      {
+        "title": "Billin: cómo disolver una sociedad",
+        "url": "https://www.billin.net/blog/disolucion-sociedad-iva-irpf/",
+        "accessed": "2026-10-25",
+        "official": false
+      },
+      {
+        "title": "AyudaT Pymes: cómo disolver una sociedad limitada",
+        "url": "https://ayudatpymes.com/legal/dar-de-baja-una-empresa",
+        "accessed": "2026-10-25",
+        "official": false
+      },
+      {
+        "title": "Infoautónomos: dar de baja una sociedad",
+        "url": "https://www.infoautonomos.com/?p=2995",
+        "accessed": "2026-10-25",
+        "official": false
+      },
+      {
+        "title": "Resolución de la DGRN de 1 de agosto de 2016 sobre la escritura de extinción",
+        "url": "https://www.elnotario.es/images/pdf/RDGRN-N70-37-01082016.pdf",
+        "accessed": "2026-10-25",
+        "official": false
+      }
+    ],
+    "check": [
+      {
+        "id": "c1.5-1",
+        "lessonId": "1.5",
+        "kind": "choice",
+        "prompt": "¿Cuál es el orden correcto para cerrar una sociedad limitada?",
+        "answer": 0,
+        "explain": "Cada fase abre la siguiente.",
+        "options": [
+          "Disolución, liquidación y extinción",
+          "Extinción, disolución y liquidación",
+          "Liquidación, extinción y disolución",
+          "Solo el modelo 036 de baja"
+        ]
+      },
+      {
+        "id": "c1.5-2",
+        "lessonId": "1.5",
+        "kind": "tf",
+        "prompt": "Presentar el modelo 036 de baja en Hacienda extingue por sí solo la sociedad.",
+        "answer": false,
+        "explain": "La extinción exige la cancelación de los asientos en el Registro Mercantil."
+      },
+      {
+        "id": "c1.5-3",
+        "lessonId": "1.5",
+        "kind": "tf",
+        "prompt": "Antes de repartir el patrimonio entre los socios hay que pagar a los acreedores.",
+        "answer": true,
+        "explain": "Es un paso previo a la extinción."
+      },
+      {
+        "id": "c1.5-4",
+        "lessonId": "1.5",
+        "kind": "tf",
+        "prompt": "La declaración de concurso es, por sí sola, causa de disolución de una sociedad de capital.",
+        "answer": false,
+        "explain": "La apertura de la fase de liquidación en el concurso sí produce la disolución."
+      }
+    ]
+  },
 };
 
 export const m1Bank: Question[] = [
@@ -611,5 +762,85 @@ export const m1Bank: Question[] = [
     "prompt": "El alta en el RETA puede tramitarse por internet sin acudir a las oficinas de la Seguridad Social.",
     "answer": true,
     "explain": "Existen servicios en el Sistema RED y en la sede electrónica."
+  },
+  {
+    "id": "e1-28",
+    "lessonId": "1.5",
+    "kind": "choice",
+    "prompt": "¿Qué artículos de la Ley de Sociedades de Capital regulan la disolución y liquidación?",
+    "answer": 0,
+    "explain": "Es el régimen mercantil de la disolución, liquidación y extinción.",
+    "options": [
+      "Arts. 360 a 400",
+      "Arts. 1 a 50",
+      "Arts. 100 a 150",
+      "Arts. 500 a 550"
+    ]
+  },
+  {
+    "id": "e1-29",
+    "lessonId": "1.5",
+    "kind": "tf",
+    "prompt": "El cese de la actividad que constituye el objeto social durante un año puede ser causa de disolución.",
+    "answer": true,
+    "explain": "Es una de las causas legales."
+  },
+  {
+    "id": "e1-30",
+    "lessonId": "1.5",
+    "kind": "choice",
+    "prompt": "Tras inscribir la disolución, la razón social de la sociedad añade:",
+    "answer": 0,
+    "explain": "Indica que la sociedad está en periodo de liquidación.",
+    "options": [
+      "«en liquidación»",
+      "«extinguida»",
+      "«en concurso»",
+      "«inactiva»"
+    ]
+  },
+  {
+    "id": "e1-31",
+    "lessonId": "1.5",
+    "kind": "choice",
+    "prompt": "Salvo disposición contraria de los estatutos o de la junta, ¿quiénes pasan a ser liquidadores?",
+    "answer": 0,
+    "explain": "Es la regla del art. 376 LSC.",
+    "options": [
+      "Quienes eran administradores al disolverse",
+      "Los socios con más participaciones",
+      "Un notario",
+      "La Agencia Tributaria"
+    ]
+  },
+  {
+    "id": "e1-32",
+    "lessonId": "1.5",
+    "kind": "tf",
+    "prompt": "La escritura pública de extinción incorpora el balance final de liquidación y la relación de socios.",
+    "answer": true,
+    "explain": "Se acompaña de la cuota que corresponde a cada socio."
+  },
+  {
+    "id": "e1-33",
+    "lessonId": "1.5",
+    "kind": "tf",
+    "prompt": "Durante la liquidación, la sociedad sigue sujeta al Impuesto sobre Sociedades.",
+    "answer": true,
+    "explain": "La personalidad jurídica subsiste hasta la extinción."
+  },
+  {
+    "id": "e1-34",
+    "lessonId": "1.5",
+    "kind": "choice",
+    "prompt": "¿Quién aprueba el balance final de liquidación?",
+    "answer": 0,
+    "explain": "Los liquidadores lo someten a su aprobación junto con el proyecto de división.",
+    "options": [
+      "La junta general",
+      "El notario",
+      "El Registro Mercantil",
+      "El SEPE"
+    ]
   },
 ];

@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { modules, allLessons } from "../src/data/modules";
-import { bankOf, lessonContent } from "../src/data/content";
+import { bankOf, examReady, lessonContent } from "../src/data/content";
 import { isCorrect, type Question } from "../src/data/questions";
 
 const emoji = /\p{Extended_Pictographic}/u;
@@ -44,6 +44,15 @@ describe("integridad del contenido", () => {
       }
       expect(c.tips.length, id).toBeGreaterThanOrEqual(2);
       expect(c.check.length, id).toBeGreaterThanOrEqual(4);
+    }
+  });
+
+  it("al menos un modulo completo con examen disponible", () => {
+    const ready = modules.filter((m) => examReady(m.id));
+    expect(ready.map((m) => m.id)).toContain("m1");
+    for (const m of ready) {
+      expect(m.lessons.every((l) => lessonContent[l.id]), m.id).toBe(true);
+      expect(bankOf(m.id).length, m.id).toBeGreaterThanOrEqual(12);
     }
   });
 

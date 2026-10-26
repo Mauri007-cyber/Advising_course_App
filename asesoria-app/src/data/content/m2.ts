@@ -1066,6 +1066,604 @@ export const m2Lessons: Record<string, LessonContent> = {
       }
     ]
   },
+  "2.11": {
+    "intro": "Llega fin de mes y Marta tiene que preparar la nómina completa de Carlos: la cotización a la Seguridad Social del trabajador, la de la empresa y la retención del IRPF. En esta lección ves cómo se calculan con los tipos y límites de 2026. Estos datos cambian cada año, así que lo importante es aprender dónde mirarlos.",
+    "steps": [
+      {
+        "title": "De bruto a líquido",
+        "body": [
+          "Ya conoces la estructura del recibo de salarios (lección 2.2). Las dos grandes deducciones son la aportación del trabajador a la Seguridad Social y la retención del IRPF.",
+          "La empresa, además, paga su propia cotización, que no aparece como deducción al trabajador pero sí informa el recibo."
+        ]
+      },
+      {
+        "title": "Base de cotización y límites en 2026",
+        "body": [
+          "La Orden PJC/297/2026, publicada en el BOE el 31 de marzo de 2026 y con efectos desde el 1 de enero, desarrolla la cotización de 2026.",
+          "La base máxima de cotización en el Régimen General es de 5.101,20 euros mensuales.",
+          "La base mínima depende del grupo de cotización. Para el grupo 1 es de 1.424,40 euros mensuales.",
+          "Los salarios que superan la base máxima tienen una cotización adicional de solidaridad sobre el exceso, en tres tramos con tipo progresivo."
+        ]
+      },
+      {
+        "title": "Tipos de cotización en 2026",
+        "body": [
+          "Contingencias comunes: 28,30 %, de los que 23,60 % corresponde a la empresa y 4,70 % al trabajador.",
+          "Mecanismo de equidad intergeneracional (MEI): 0,90 % sobre la base de contingencias comunes, de los que 0,75 % es de la empresa y 0,15 % del trabajador.",
+          "Formación profesional: 0,70 %, de los que 0,60 % es de la empresa y 0,10 % del trabajador.",
+          "FOGASA: 0,20 %, solo a cargo de la empresa.",
+          "Desempleo en contratos de duración determinada a tiempo completo: 8,30 %, de los que 6,70 % es de la empresa y 1,60 % del trabajador. Los contratos indefinidos tienen otro tipo: consúltalo en la Orden.",
+          "Contingencias profesionales (accidente de trabajo y enfermedad profesional): según la tarifa de primas de la Ley General de la Seguridad Social, íntegramente a cargo de la empresa."
+        ]
+      },
+      {
+        "title": "La retención de IRPF",
+        "body": [
+          "El trabajador comunica sus datos personales y familiares a la empresa con el modelo 145 (art. 88 del Reglamento del IRPF). Con ellos se determina el tipo de retención.",
+          "Si los datos son falsos, incompletos o inexactos, o no se comunican las variaciones que habrían supuesto una retención mayor, la infracción se sanciona con multa del 35 % al 150 % de lo que se dejó de retener (art. 205 de la Ley General Tributaria).",
+          "La AEAT publica cada año el algoritmo de cálculo de las retenciones. Sus pasos principales son: rendimiento neto del trabajo, reducción por obtención de rendimientos del trabajo, base para calcular el tipo, mínimo personal y familiar, cuota de retención y tipo de retención.",
+          "El importe se calcula con el programa de ayuda o el algoritmo vigente, no de memoria."
+        ]
+      }
+    ],
+    "example": {
+      "title": "Nómina de Carlos con contrato temporal a tiempo completo (retención ilustrativa)",
+      "body": [
+        "Base de cotización: 1.800 €. Supuesto simplificado: coincide con el salario bruto mensual.",
+        "Trabajador: contingencias comunes 4,70 % = 84,60 €. MEI 0,15 % = 2,70 €. Formación 0,10 % = 1,80 €. Desempleo 1,60 % = 28,80 €. Total: 117,90 €, un 6,55 % de la base.",
+        "Empresa: contingencias comunes 23,60 % = 424,80 €. MEI 0,75 % = 13,50 €. Formación 0,60 % = 10,80 €. Desempleo 6,70 % = 120,60 €. FOGASA 0,20 % = 3,60 €. Total: 573,30 €, sin contar las contingencias profesionales.",
+        "Retención de IRPF: 10 % = 180 €. El porcentaje es inventado para practicar; el real sale del algoritmo de la AEAT con los datos del modelo 145.",
+        "Líquido a percibir: 1.800 − 117,90 − 180 = 1.502,10 €."
+      ]
+    },
+    "tips": [
+      {
+        "kind": "error",
+        "text": "Aplicar los tipos de un año anterior. Cada ejercicio trae su orden de cotización y los porcentajes y topes pueden cambiar."
+      },
+      {
+        "kind": "consejo",
+        "text": "Pide el modelo 145 actualizado al empezar y cuando cambie la situación familiar del trabajador. Evita retenciones erróneas y sanciones."
+      },
+      {
+        "kind": "clave",
+        "text": "En 2026, contingencias comunes: 4,70 % trabajador y 23,60 % empresa. Base máxima: 5.101,20 € al mes."
+      }
+    ],
+    "law": [
+      "Orden PJC/297/2026, de 30 de marzo",
+      "Reglamento del IRPF (RD 439/2007), arts. 75 a 88",
+      "Ley General Tributaria, art. 205"
+    ],
+    "sources": [
+      {
+        "title": "BOE: Orden PJC/297/2026, de 30 de marzo (leída a través de resúmenes; texto original pendiente de contrastar)",
+        "url": "https://www.boe.es/eli/es/o/2026/03/30/pjc297",
+        "accessed": "2026-10-25",
+        "official": true
+      },
+      {
+        "title": "Unión de Mutuas: resumen de la Orden PJC/297/2026",
+        "url": "https://www.uniondemutuas.es/wp-content/uploads/2026/04/RESUMEN-Orden-PJC2972026-de-30-de-marzo.pdf",
+        "accessed": "2026-10-25",
+        "official": false
+      },
+      {
+        "title": "Cuatrecasas: claves de la Orden de Cotización 2026",
+        "url": "https://www.cuatrecasas.com/es/spain/laboral/art/claves-orden-cotizacion-2026",
+        "accessed": "2026-10-25",
+        "official": false
+      },
+      {
+        "title": "Ibermutua: bases y tipos de cotización 2026",
+        "url": "https://www.ibermutua.es/wp-content/uploads/2026/04/BASES-Y-TIPOS-DE-COTIZACION-A-LA-SEGURIDAD-SOCIAL-PARA-2026.pdf",
+        "accessed": "2026-10-25",
+        "official": false
+      },
+      {
+        "title": "AEAT: algoritmo de retenciones 2026",
+        "url": "https://www3.agenciatributaria.gob.es/static_files/Sede/Programas_ayuda/Retenciones/2026/ALGORITMO_2026.pdf",
+        "accessed": "2026-10-25",
+        "official": true
+      },
+      {
+        "title": "AEAT: modelo 145, comunicación de datos al pagador",
+        "url": "https://www.seg-social.es/descarga/en/41040",
+        "accessed": "2026-10-25",
+        "official": true
+      }
+    ],
+    "check": [
+      {
+        "id": "c2.11-1",
+        "lessonId": "2.11",
+        "kind": "number",
+        "prompt": "En 2026, ¿qué porcentaje de contingencias comunes corresponde al trabajador?",
+        "answer": 4.7,
+        "explain": "El tipo total es 28,30 %: 23,60 % empresa y 4,70 % trabajador.",
+        "unit": "%",
+        "tolerance": 0.01
+      },
+      {
+        "id": "c2.11-2",
+        "lessonId": "2.11",
+        "kind": "number",
+        "prompt": "¿Cuál es la base máxima mensual de cotización en el Régimen General en 2026?",
+        "answer": 5101.2,
+        "explain": "Lo fija la Orden PJC/297/2026.",
+        "unit": "€",
+        "tolerance": 0.01
+      },
+      {
+        "id": "c2.11-3",
+        "lessonId": "2.11",
+        "kind": "tf",
+        "prompt": "El FOGASA se paga a cargo exclusivo de la empresa.",
+        "answer": true,
+        "explain": "El tipo es del 0,20 % y lo asume la empresa."
+      },
+      {
+        "id": "c2.11-4",
+        "lessonId": "2.11",
+        "kind": "choice",
+        "prompt": "¿Qué documento usa el trabajador para comunicar a la empresa sus datos personales y familiares para calcular la retención?",
+        "answer": 0,
+        "explain": "Se basa en el art. 88 del Reglamento del IRPF.",
+        "options": [
+          "Modelo 145",
+          "Modelo 036",
+          "Modelo 303",
+          "Modelo 111"
+        ]
+      }
+    ]
+  },
+  "2.12": {
+    "intro": "Carlos pide ausentarse del trabajo porque se casa. Otro día, su abuelo ingresa en el hospital. No son vacaciones ni bajas: son permisos retribuidos, que la ley reconoce para ciertas situaciones y que la empresa no puede descontar de la nómina. Esta lección recoge los más habituales del art. 37.3 del Estatuto de los Trabajadores, tal como los dejó el Real Decreto-ley 5/2023.",
+    "steps": [
+      {
+        "title": "Qué son los permisos retribuidos",
+        "body": [
+          "Son ausencias del trabajo, con derecho a retribución, por motivos que la ley enumera. Son una excepción a la regla de que sin trabajo no hay salario.",
+          "Los convenios colectivos pueden mejorarlos, pero no recortar lo que fija la ley."
+        ]
+      },
+      {
+        "title": "Matrimonio o pareja de hecho",
+        "body": [
+          "Quince días naturales por matrimonio o por registro de pareja de hecho. El Real Decreto-ley 5/2023 equiparó la pareja de hecho al matrimonio en este permiso."
+        ]
+      },
+      {
+        "title": "Accidente o enfermedad grave de un familiar",
+        "body": [
+          "Cinco días por accidente o enfermedad graves, hospitalización o intervención quirúrgica sin hospitalización que precise reposo domiciliario del cónyuge, la pareja de hecho o parientes hasta el segundo grado de consanguinidad o afinidad.",
+          "Antes de la reforma eran dos días, ampliables a cuatro si había desplazamiento.",
+          "No hace falta disfrutar los cinco días seguidos ni empezarlos el primer día del ingreso."
+        ]
+      },
+      {
+        "title": "Fallecimiento de un familiar",
+        "body": [
+          "Dos días por el fallecimiento del cónyuge, la pareja de hecho o parientes hasta el segundo grado de consanguinidad o afinidad.",
+          "El texto prevé ampliar el permiso en dos días cuando se necesite un desplazamiento. La ampliación se vincula al permiso por fallecimiento; para el de accidente o enfermedad grave existe discusión interpretativa."
+        ]
+      },
+      {
+        "title": "Fuerza mayor por motivos familiares urgentes",
+        "body": [
+          "El art. 37.9 reconoce hasta cuatro días al año de permiso retribuido por causa de fuerza mayor, cuando sea necesario atender motivos familiares urgentes de enfermedad o accidente que hagan indispensable la presencia inmediata de la persona trabajadora.",
+          "Se puede disfrutar por horas hasta completar los cuatro días."
+        ]
+      },
+      {
+        "title": "Cómo se cuentan los días",
+        "body": [
+          "El matrimonio habla expresamente de días naturales. En los demás permisos la ley solo dice «días», y las interpretaciones y los convenios varían entre días naturales y laborables.",
+          "El cómputo es objeto de doctrina del Tribunal Supremo. Antes de aplicarlo, consulta el convenio y la jurisprudencia vigente."
+        ]
+      }
+    ],
+    "example": {
+      "title": "Los permisos de Carlos (supuesto ilustrativo)",
+      "body": [
+        "Carlos se casa: dispone de 15 días naturales de permiso retribuido.",
+        "Meses después ingresa su abuelo, pariente de segundo grado, en el hospital: tiene derecho a 5 días de permiso.",
+        "Más tarde fallece su hermano, también pariente de segundo grado: tiene 2 días, ampliables en 2 más si debe desplazarse.",
+        "Un día su hija enferma de repente y debe atenderla con urgencia: puede usar horas del permiso por fuerza mayor, con un máximo de cuatro días al año."
+      ]
+    },
+    "tips": [
+      {
+        "kind": "error",
+        "text": "Aplicar la regla anterior a 2023: dos días por hospitalización de un familiar. Hoy son cinco."
+      },
+      {
+        "kind": "consejo",
+        "text": "Revisa siempre el convenio: puede mejorar los permisos y concretar si los días son naturales o laborables."
+      },
+      {
+        "kind": "clave",
+        "text": "Matrimonio: 15 días naturales. Hospitalización o enfermedad grave: 5 días. Fallecimiento: 2 días. Fuerza mayor familiar: hasta 4 días al año."
+      }
+    ],
+    "law": [
+      "Estatuto de los Trabajadores, art. 37.3 y 37.9",
+      "Real Decreto-ley 5/2023, de 28 de junio"
+    ],
+    "sources": [
+      {
+        "title": "Comisiones Obreras: nuevos permisos y derechos de corresponsabilidad (RDL 5/2023)",
+        "url": "https://cantabria.fe.ccoo.es/6a8d01733e6c296ca65e20b4f2fdaa4c000063.pdf",
+        "accessed": "2026-10-25",
+        "official": false
+      },
+      {
+        "title": "Comisiones Obreras Castilla-La Mancha: resumen de la reforma de permisos",
+        "url": "https://castillalamancha.ccoo.es/38f028e596402bb313d5e8e7f4dfb81b000052.pdf",
+        "accessed": "2026-10-25",
+        "official": false
+      },
+      {
+        "title": "Pérez-Llorca: newsletter laboral de octubre de 2023 sobre el RDL 5/2023",
+        "url": "https://www.perezllorca.com/wp-content/uploads/2023/10/Newsletter-Laboral-Octubre-2023_vf.pdf",
+        "accessed": "2026-10-25",
+        "official": false
+      },
+      {
+        "title": "USO: petición de aclaración sobre el art. 37.3 ET",
+        "url": "https://www.uso.es/wp-content/uploads/2023/07/sindicato-uso-peticion-articulo-37.3-ET-ministerio-trabajo.pdf",
+        "accessed": "2026-10-25",
+        "official": false
+      },
+      {
+        "title": "Universidad Pablo de Olavide: cómputo de los permisos retribuidos del art. 37.3 ET",
+        "url": "https://www.upo.es/revistas/index.php/lex_social/article/download/10544/9331/42308",
+        "accessed": "2026-10-25",
+        "official": false
+      }
+    ],
+    "check": [
+      {
+        "id": "c2.12-1",
+        "lessonId": "2.12",
+        "kind": "number",
+        "prompt": "¿Cuántos días naturales de permiso retribuido corresponden por matrimonio o registro de pareja de hecho?",
+        "answer": 15,
+        "explain": "Es el permiso del art. 37.3.a del Estatuto.",
+        "unit": "días"
+      },
+      {
+        "id": "c2.12-2",
+        "lessonId": "2.12",
+        "kind": "number",
+        "prompt": "¿Cuántos días de permiso corresponden por hospitalización de un pariente hasta el segundo grado?",
+        "answer": 5,
+        "explain": "Tras el RDL 5/2023 son cinco días; antes eran dos.",
+        "unit": "días"
+      },
+      {
+        "id": "c2.12-3",
+        "lessonId": "2.12",
+        "kind": "number",
+        "prompt": "¿Cuántos días de permiso corresponden por el fallecimiento de un pariente hasta el segundo grado, sin desplazamiento?",
+        "answer": 2,
+        "explain": "Se amplía en dos días si hace falta desplazarse.",
+        "unit": "días"
+      },
+      {
+        "id": "c2.12-4",
+        "lessonId": "2.12",
+        "kind": "tf",
+        "prompt": "Un convenio colectivo puede recortar los permisos retribuidos que fija el Estatuto de los Trabajadores.",
+        "answer": false,
+        "explain": "Los convenios solo pueden mejorarlos."
+      }
+    ]
+  },
+  "2.13": {
+    "intro": "Lucía, empleada de la gestoría de Marta, va a tener un hijo. Su empresa debe saber cuánto dura su ausencia, qué cobra durante ella y cómo se reparte entre los dos progenitores. El permiso por nacimiento y cuidado de menor ha cambiado recientemente: el Real Decreto-ley 9/2025, de 29 de julio, lo amplió.",
+    "steps": [
+      {
+        "title": "Cuánto dura el permiso",
+        "body": [
+          "Cada progenitor tiene derecho a 19 semanas, frente a las 16 anteriores. El permiso es individual e intransferible.",
+          "En las familias monoparentales la única persona progenitora dispone de 32 semanas."
+        ]
+      },
+      {
+        "title": "Cómo se reparten las semanas",
+        "body": [
+          "Seis semanas son obligatorias e ininterrumpidas, inmediatamente después del parto o de la resolución judicial o administrativa en adopción, guarda o acogimiento.",
+          "Once semanas son de disfrute voluntario y flexible, por semanas, hasta que el menor cumpla 12 meses. Son veintidós en las familias monoparentales.",
+          "Dos semanas adicionales, cuatro en las familias monoparentales, se destinan al cuidado del menor y pueden disfrutarse hasta que cumpla 8 años."
+        ]
+      },
+      {
+        "title": "Casos con semanas añadidas",
+        "body": [
+          "En los partos múltiples se amplía una semana para cada progenitor por cada hijo a partir del segundo. También se amplía una semana si el menor tiene una discapacidad.",
+          "En nacimientos prematuros u hospitalizaciones tras el parto existen ampliaciones adicionales, de hasta trece semanas según las fuentes consultadas."
+        ]
+      },
+      {
+        "title": "Qué se cobra y quién paga",
+        "body": [
+          "La prestación equivale al 100 % de la base reguladora, que parte de la base de cotización por contingencias comunes del mes anterior al hecho causante. No es el 100 % del salario bruto.",
+          "La paga directamente el Instituto Nacional de la Seguridad Social (INSS). Se puede solicitar por internet en «Tu Seguridad Social», también los periodos sucesivos si el disfrute se divide."
+        ]
+      },
+      {
+        "title": "Al volver al trabajo",
+        "body": [
+          "Quien se reincorpora tiene derecho al mismo puesto de trabajo y con la misma jornada, si no solicita una reducción de jornada."
+        ]
+      },
+      {
+        "title": "Aplicación en el tiempo",
+        "body": [
+          "Las dos semanas adicionales pueden solicitarse con efectos retroactivos si el nacimiento, la adopción, la guarda o el acogimiento se produjeron a partir del 2 de agosto de 2024."
+        ]
+      }
+    ],
+    "example": {
+      "title": "El permiso de Lucía (supuesto ilustrativo)",
+      "body": [
+        "Lucía tiene un hijo en una familia con dos progenitores. Le corresponden 19 semanas.",
+        "Las primeras 6 semanas son obligatorias y seguidas, tras el parto. Después puede repartir otras 11 semanas, por semanas, hasta que el niño cumpla 12 meses.",
+        "Le quedan 2 semanas de cuidado del menor, que puede disfrutar hasta los 8 años del niño.",
+        "Durante todo el permiso cobra el 100 % de su base reguladora, abonada por el INSS. Marta debe tramitar su situación ante la Seguridad Social y volver a asignarle su puesto cuando se reincorpore."
+      ]
+    },
+    "tips": [
+      {
+        "kind": "error",
+        "text": "Seguir hablando de 16 semanas. Desde el Real Decreto-ley 9/2025 son 19 por progenitor y 32 en familias monoparentales."
+      },
+      {
+        "kind": "consejo",
+        "text": "Confirma con el cliente la fecha del hecho causante: de ella dependen la base reguladora y la aplicación retroactiva de las semanas adicionales."
+      },
+      {
+        "kind": "clave",
+        "text": "19 semanas: 6 obligatorias, 11 flexibles hasta los 12 meses y 2 de cuidado hasta los 8 años."
+      }
+    ],
+    "law": [
+      "Estatuto de los Trabajadores, art. 48",
+      "Ley General de la Seguridad Social, prestación por nacimiento y cuidado de menor",
+      "Real Decreto-ley 9/2025, de 29 de julio"
+    ],
+    "sources": [
+      {
+        "title": "Cuatrecasas: ampliación del permiso de nacimiento y cuidado en España",
+        "url": "https://www.cuatrecasas.com/es/latam/laboral/art/ampliacion-permiso-nacimiento-cuidado",
+        "accessed": "2026-10-25",
+        "official": false
+      },
+      {
+        "title": "Cuatrecasas: ampliación de la suspensión por nacimiento y cuidado de menor (Legal Flash)",
+        "url": "https://www.cuatrecasas.com/resources/mpliacion-del-permiso-de-nacimiento-y-cuidado-en-espana-688a0ef02f618043059228.pdf",
+        "accessed": "2026-10-25",
+        "official": false
+      },
+      {
+        "title": "Forvis Mazars: novedades en la regulación del permiso por nacimiento",
+        "url": "https://www.forvismazars.com/es/en/insights/alerts/alertas-laborales/novedades-regulacion-permiso-por-nacimiento",
+        "accessed": "2026-10-25",
+        "official": false
+      },
+      {
+        "title": "Deia: nuevos permisos de nacimiento y cuidados",
+        "url": "https://www.deia.eus/actualidad/sociedad/2025/07/29/nuevos-permisos-nacimiento-cuidados-duracion-9932202.html",
+        "accessed": "2026-10-25",
+        "official": false
+      },
+      {
+        "title": "El Español: ampliación del permiso por nacimiento hasta 32 semanas",
+        "url": "https://www.elespanol.com/valencia/20260926/oficial-trabajadores-pueden-ampliar-permiso-nacimiento-hijo-semanas-trt/1003744394401_0.html",
+        "accessed": "2026-10-25",
+        "official": false
+      },
+      {
+        "title": "CCOO Servicios: 16 semanas de permiso por nacimiento (régimen anterior, partos múltiples)",
+        "url": "https://www.ccoo-servicios.es/archivos/santander/20201222%2016%20semanas%20de%20permiso%20por%20nacimiento.pdf",
+        "accessed": "2026-10-25",
+        "official": false
+      }
+    ],
+    "check": [
+      {
+        "id": "c2.13-1",
+        "lessonId": "2.13",
+        "kind": "number",
+        "prompt": "¿Cuántas semanas de permiso por nacimiento y cuidado de menor corresponden a cada progenitor en una familia biparental?",
+        "answer": 19,
+        "explain": "El Real Decreto-ley 9/2025 las amplió de 16 a 19.",
+        "unit": "semanas"
+      },
+      {
+        "id": "c2.13-2",
+        "lessonId": "2.13",
+        "kind": "number",
+        "prompt": "¿Cuántas de esas semanas son obligatorias e ininterrumpidas inmediatamente tras el parto?",
+        "answer": 6,
+        "explain": "Las demás pueden disfrutarse con flexibilidad.",
+        "unit": "semanas"
+      },
+      {
+        "id": "c2.13-3",
+        "lessonId": "2.13",
+        "kind": "number",
+        "prompt": "¿Hasta qué edad del menor, en años, pueden disfrutarse las dos semanas adicionales de cuidado?",
+        "answer": 8,
+        "explain": "Las otras semanas voluntarias se disfrutan hasta los 12 meses.",
+        "unit": "años"
+      },
+      {
+        "id": "c2.13-4",
+        "lessonId": "2.13",
+        "kind": "choice",
+        "prompt": "¿Cuántas semanas de permiso tiene la única persona progenitora en una familia monoparental?",
+        "answer": 0,
+        "explain": "Tras el RDL 9/2025: 6 obligatorias, 22 voluntarias y 4 de cuidado.",
+        "options": [
+          "32",
+          "16",
+          "19",
+          "24"
+        ]
+      }
+    ]
+  },
+  "2.14": {
+    "intro": "Marta descubre que un empleado ha incumplido gravemente sus obligaciones y se plantea despedirlo sin indemnización. El despido disciplinario existe, pero la ley lo rodea de requisitos de forma que, si se incumplen, pueden convertirlo en improcedente. En esta lección ves cuándo procede, cómo se comunica y qué se paga siempre: el finiquito.",
+    "steps": [
+      {
+        "title": "Qué es el despido disciplinario",
+        "body": [
+          "El art. 54 del Estatuto de los Trabajadores permite a la empresa despedir por incumplimientos del trabajador que sean graves y culpables. El apartado 54.2 enumera cuáles.",
+          "El convenio colectivo puede regular faltas y sanciones, pero no contradecir los tipos legales del art. 54."
+        ]
+      },
+      {
+        "title": "Plazo de la empresa para sancionar",
+        "body": [
+          "Según las fuentes consultadas, la empresa puede sancionar una falta muy grave en 60 días desde que tiene conocimiento de ella y, en cualquier caso, a los seis meses de haberse cometido."
+        ]
+      },
+      {
+        "title": "La carta de despido (art. 55.1 ET)",
+        "body": [
+          "Debe comunicarse por escrito y en ella han de figurar los hechos que lo motivan y la fecha de efectos. El convenio puede añadir otras exigencias formales.",
+          "La empresa solo puede justificar el despido en los hechos imputados en la carta.",
+          "Si la carta falta o es defectuosa, el despido se califica como improcedente (art. 55.4 ET)."
+        ]
+      },
+      {
+        "title": "Calificación y consecuencias",
+        "body": [
+          "Un juez puede calificarlo como procedente, improcedente o nulo.",
+          "Si es procedente, no hay indemnización: solo se paga el finiquito.",
+          "Si es improcedente, la empresa elige, en los cinco días siguientes a la notificación de la sentencia, entre readmitir o indemnizar. La indemnización es de 33 días de salario por año de servicio, con un máximo de 24 mensualidades, para el tiempo posterior al 12 de febrero de 2012. Para el anterior son 45 días por año, con el límite de 720 días de salario en conjunto (art. 56 ET)."
+        ]
+      },
+      {
+        "title": "Plazo del trabajador",
+        "body": [
+          "Tiene 20 días hábiles desde la fecha de efectos para impugnar el despido. Son inhábiles sábados, domingos, festivos y los días 24 y 31 de diciembre (art. 59.3 ET)."
+        ]
+      },
+      {
+        "title": "El finiquito",
+        "body": [
+          "Es la liquidación de lo que se debe al trabajador al terminar la relación, y se paga en cualquier despido, también en el procedente.",
+          "Incluye los salarios pendientes hasta la fecha de efectos, las vacaciones devengadas y no disfrutadas, la parte proporcional de las pagas extraordinarias y otros conceptos vencidos.",
+          "No es la indemnización ni la carta de despido: es un documento distinto con efectos propios."
+        ]
+      }
+    ],
+    "example": {
+      "title": "Despido de un empleado con 4 años y 3 meses (cifras ilustrativas)",
+      "body": [
+        "Salario diario: 60 €. Antigüedad: 4,25 años, todos posteriores al 12 de febrero de 2012.",
+        "Finiquito, que se paga siempre: salarios pendientes 600 €, vacaciones no disfrutadas 300 € y parte proporcional de pagas extra 400 €. Total: 1.300 €.",
+        "Si el despido fuese procedente, solo se paga ese finiquito.",
+        "Si fuese declarado improcedente y la empresa eligiera indemnizar: 33 días × 4,25 años = 140,25 días. 140,25 × 60 = 8.415 € de indemnización, además del finiquito."
+      ]
+    },
+    "tips": [
+      {
+        "kind": "error",
+        "text": "Creer que en un despido procedente no se debe nada. El finiquito se paga siempre."
+      },
+      {
+        "kind": "consejo",
+        "text": "Redacta la carta con hechos, fechas y la fecha de efectos. Después no se pueden añadir motivos que no estén en ella."
+      },
+      {
+        "kind": "clave",
+        "text": "Carta escrita con hechos y fecha de efectos; improcedente: 33 días por año con tope de 24 mensualidades; impugnación en 20 días hábiles."
+      }
+    ],
+    "law": [
+      "Estatuto de los Trabajadores, arts. 54, 55, 56 y 59.3"
+    ],
+    "sources": [
+      {
+        "title": "Legalitas: manual del despido individual",
+        "url": "https://www.legalitas.com/sites/default/files/Manual%20Despido%20individual.pdf",
+        "accessed": "2026-10-25",
+        "official": false
+      },
+      {
+        "title": "INEAF: el despido disciplinario, requisitos, efectos y obligaciones",
+        "url": "https://www.ineaf.es/tribuna/despido-disciplinario/",
+        "accessed": "2026-10-25",
+        "official": false
+      },
+      {
+        "title": "Loentiendo: el despido disciplinario y el finiquito",
+        "url": "https://loentiendo.com/?p=24718",
+        "accessed": "2026-10-25",
+        "official": false
+      },
+      {
+        "title": "Captain Legal: indemnización por despido improcedente y carta de despido",
+        "url": "https://www.captain.legal/es/blog/indemnizacion-despido-improcedente-carta/",
+        "accessed": "2026-10-25",
+        "official": false
+      },
+      {
+        "title": "Gestoría 247: coste de despedir a un trabajador en 2026",
+        "url": "https://gestoria247.com/blog/despedir-a-un-trabajador-coste-empresa-2026",
+        "accessed": "2026-10-25",
+        "official": false
+      }
+    ],
+    "check": [
+      {
+        "id": "c2.14-1",
+        "lessonId": "2.14",
+        "kind": "tf",
+        "prompt": "En un despido disciplinario procedente la empresa no debe pagar nada al trabajador.",
+        "answer": false,
+        "explain": "El finiquito se paga siempre."
+      },
+      {
+        "id": "c2.14-2",
+        "lessonId": "2.14",
+        "kind": "choice",
+        "prompt": "La carta de despido disciplinario debe incluir:",
+        "answer": 0,
+        "explain": "Así lo exige el art. 55.1 del Estatuto.",
+        "options": [
+          "Los hechos que lo motivan y la fecha de efectos",
+          "Solo la fecha de efectos",
+          "Únicamente el importe del finiquito",
+          "Nada: puede ser verbal"
+        ]
+      },
+      {
+        "id": "c2.14-3",
+        "lessonId": "2.14",
+        "kind": "number",
+        "prompt": "¿Cuántos días hábiles tiene el trabajador para impugnar el despido desde la fecha de efectos?",
+        "answer": 20,
+        "explain": "Son inhábiles sábados, domingos, festivos y los días 24 y 31 de diciembre.",
+        "unit": "días"
+      },
+      {
+        "id": "c2.14-4",
+        "lessonId": "2.14",
+        "kind": "number",
+        "prompt": "Despido improcedente, tiempo posterior al 12-2-2012: ¿cuántos días de salario por año de servicio?",
+        "answer": 33,
+        "explain": "Con un máximo de 24 mensualidades.",
+        "unit": "días"
+      }
+    ]
+  },
 };
 
 export const m2Bank: Question[] = [
@@ -1629,5 +2227,355 @@ export const m2Bank: Question[] = [
     "prompt": "Pueden comunicar contratos los profesionales que actúen en representación de la empresa, con la autorización correspondiente.",
     "answer": true,
     "explain": "La normativa admite la comunicación por representantes."
+  },
+  {
+    "id": "e2-70",
+    "lessonId": "2.11",
+    "kind": "number",
+    "prompt": "Contingencias comunes en 2026: ¿qué porcentaje total se cotiza entre empresa y trabajador?",
+    "answer": 28.3,
+    "explain": "23,60 % la empresa y 4,70 % el trabajador.",
+    "unit": "%",
+    "tolerance": 0.01
+  },
+  {
+    "id": "e2-71",
+    "lessonId": "2.11",
+    "kind": "number",
+    "prompt": "MEI en 2026: ¿qué porcentaje total se aplica sobre la base de contingencias comunes?",
+    "answer": 0.9,
+    "explain": "0,75 % empresa y 0,15 % trabajador.",
+    "unit": "%",
+    "tolerance": 0.001
+  },
+  {
+    "id": "e2-72",
+    "lessonId": "2.11",
+    "kind": "number",
+    "prompt": "Formación profesional: ¿qué porcentaje corresponde al trabajador?",
+    "answer": 0.1,
+    "explain": "El total es 0,70 %: 0,60 % empresa y 0,10 % trabajador.",
+    "unit": "%",
+    "tolerance": 0.001
+  },
+  {
+    "id": "e2-73",
+    "lessonId": "2.11",
+    "kind": "number",
+    "prompt": "Base de cotización de 2.000 €. ¿Cuánto paga el trabajador por contingencias comunes (4,70 %)?",
+    "answer": 94,
+    "explain": "2.000 × 0,047 = 94 €.",
+    "unit": "€"
+  },
+  {
+    "id": "e2-74",
+    "lessonId": "2.11",
+    "kind": "number",
+    "prompt": "Contrato temporal a tiempo completo con base de 1.800 €. ¿Cuánto es la aportación total del trabajador por contingencias comunes, MEI, formación y desempleo (6,55 %)?",
+    "answer": 117.9,
+    "explain": "84,60 + 2,70 + 1,80 + 28,80 = 117,90 €.",
+    "unit": "€",
+    "tolerance": 0.01
+  },
+  {
+    "id": "e2-75",
+    "lessonId": "2.11",
+    "kind": "tf",
+    "prompt": "La Orden PJC/297/2026 fija los límites y tipos de cotización de 2026.",
+    "answer": true,
+    "explain": "Tiene efectos desde el 1 de enero de 2026."
+  },
+  {
+    "id": "e2-76",
+    "lessonId": "2.11",
+    "kind": "tf",
+    "prompt": "Los datos inexactos en el modelo 145 que reducen la retención pueden sancionarse con una multa del 35 % al 150 % de lo no retenido.",
+    "answer": true,
+    "explain": "Está previsto en el art. 205 de la Ley General Tributaria."
+  },
+  {
+    "id": "e2-77",
+    "lessonId": "2.11",
+    "kind": "choice",
+    "prompt": "Los salarios que superan la base máxima de cotización tienen:",
+    "answer": 0,
+    "explain": "Se aplica en tres tramos con tipo progresivo.",
+    "options": [
+      "Una cotización adicional de solidaridad sobre el exceso",
+      "Exención total de cotizar por el exceso",
+      "Un tipo único igual al de contingencias comunes",
+      "Cotización solo de la empresa"
+    ]
+  },
+  {
+    "id": "e2-78",
+    "lessonId": "2.11",
+    "kind": "tf",
+    "prompt": "Los tipos y bases de cotización son los mismos todos los años.",
+    "answer": false,
+    "explain": "Cada ejercicio trae su orden de cotización."
+  },
+  {
+    "id": "e2-79",
+    "lessonId": "2.12",
+    "kind": "number",
+    "prompt": "Permiso por matrimonio: ¿cuántos días naturales?",
+    "answer": 15,
+    "explain": "Se extiende también al registro de pareja de hecho.",
+    "unit": "días"
+  },
+  {
+    "id": "e2-80",
+    "lessonId": "2.12",
+    "kind": "tf",
+    "prompt": "El permiso de 15 días se aplica también al registro de pareja de hecho.",
+    "answer": true,
+    "explain": "El RDL 5/2023 equiparó la pareja de hecho al matrimonio."
+  },
+  {
+    "id": "e2-81",
+    "lessonId": "2.12",
+    "kind": "number",
+    "prompt": "Permiso por accidente o enfermedad grave u hospitalización de un familiar hasta el segundo grado: ¿cuántos días?",
+    "answer": 5,
+    "explain": "Antes de la reforma eran dos días.",
+    "unit": "días"
+  },
+  {
+    "id": "e2-82",
+    "lessonId": "2.12",
+    "kind": "choice",
+    "prompt": "¿A qué parientes alcanzan los permisos por hospitalización y fallecimiento?",
+    "answer": 0,
+    "explain": "Incluye consanguinidad y afinidad hasta el segundo grado.",
+    "options": [
+      "Cónyuge, pareja de hecho y parientes hasta el segundo grado",
+      "Solo cónyuge e hijos",
+      "Solo familiares que conviven",
+      "Cualquier persona que designe el trabajador"
+    ]
+  },
+  {
+    "id": "e2-83",
+    "lessonId": "2.12",
+    "kind": "choice",
+    "prompt": "El abuelo de un trabajador es pariente de:",
+    "answer": 0,
+    "explain": "Los abuelos y los hermanos son parientes de segundo grado.",
+    "options": [
+      "Segundo grado de consanguinidad",
+      "Primer grado",
+      "Tercer grado",
+      "No es pariente a estos efectos"
+    ]
+  },
+  {
+    "id": "e2-84",
+    "lessonId": "2.12",
+    "kind": "number",
+    "prompt": "Fallecimiento de un familiar hasta el segundo grado, sin desplazamiento: ¿cuántos días de permiso?",
+    "answer": 2,
+    "explain": "Ampliables en dos días si se necesita desplazamiento.",
+    "unit": "días"
+  },
+  {
+    "id": "e2-85",
+    "lessonId": "2.12",
+    "kind": "number",
+    "prompt": "Permiso por fuerza mayor familiar: ¿cuántos días al año como máximo?",
+    "answer": 4,
+    "explain": "Se puede disfrutar por horas hasta completar los cuatro días.",
+    "unit": "días"
+  },
+  {
+    "id": "e2-86",
+    "lessonId": "2.12",
+    "kind": "tf",
+    "prompt": "El permiso por fuerza mayor familiar puede disfrutarse por horas.",
+    "answer": true,
+    "explain": "Hasta completar el máximo de cuatro días al año."
+  },
+  {
+    "id": "e2-87",
+    "lessonId": "2.12",
+    "kind": "tf",
+    "prompt": "Los cinco días del permiso por hospitalización han de disfrutarse seguidos y desde el primer día del ingreso.",
+    "answer": false,
+    "explain": "No es obligatorio, según las fuentes consultadas."
+  },
+  {
+    "id": "e2-88",
+    "lessonId": "2.13",
+    "kind": "number",
+    "prompt": "Permiso por nacimiento y cuidado de menor por progenitor en familia biparental: ¿cuántas semanas?",
+    "answer": 19,
+    "explain": "Eran 16 antes del RDL 9/2025.",
+    "unit": "semanas"
+  },
+  {
+    "id": "e2-89",
+    "lessonId": "2.13",
+    "kind": "tf",
+    "prompt": "El permiso por nacimiento es individual e intransferible.",
+    "answer": true,
+    "explain": "Cada progenitor disfruta del suyo."
+  },
+  {
+    "id": "e2-90",
+    "lessonId": "2.13",
+    "kind": "number",
+    "prompt": "En una familia monoparental, ¿cuántas semanas de permiso corresponden a la persona progenitora?",
+    "answer": 32,
+    "explain": "19 + 13 adicionales por no existir un segundo progenitor.",
+    "unit": "semanas"
+  },
+  {
+    "id": "e2-91",
+    "lessonId": "2.13",
+    "kind": "number",
+    "prompt": "Semanas obligatorias e ininterrumpidas tras el parto:",
+    "answer": 6,
+    "explain": "Se disfrutan inmediatamente después del parto o de la resolución.",
+    "unit": "semanas"
+  },
+  {
+    "id": "e2-92",
+    "lessonId": "2.13",
+    "kind": "number",
+    "prompt": "Semanas voluntarias de disfrute flexible hasta los 12 meses del menor en una familia biparental:",
+    "answer": 11,
+    "explain": "Se distribuyen por semanas.",
+    "unit": "semanas"
+  },
+  {
+    "id": "e2-93",
+    "lessonId": "2.13",
+    "kind": "choice",
+    "prompt": "¿Hasta qué edad pueden disfrutarse las 2 semanas adicionales de cuidado del menor?",
+    "answer": 0,
+    "explain": "Pueden acumularse o interrumpirse por semanas.",
+    "options": [
+      "8 años",
+      "12 meses",
+      "3 años",
+      "18 años"
+    ]
+  },
+  {
+    "id": "e2-94",
+    "lessonId": "2.13",
+    "kind": "choice",
+    "prompt": "La prestación por nacimiento equivale a:",
+    "answer": 0,
+    "explain": "La base parte de la base de cotización por contingencias comunes del mes anterior.",
+    "options": [
+      "El 100 % de la base reguladora",
+      "El 100 % del salario bruto",
+      "El 75 % de la base reguladora",
+      "El 60 % de la base reguladora"
+    ]
+  },
+  {
+    "id": "e2-95",
+    "lessonId": "2.13",
+    "kind": "tf",
+    "prompt": "La prestación por nacimiento la abona directamente el INSS.",
+    "answer": true,
+    "explain": "La solicitud puede hacerse en «Tu Seguridad Social»."
+  },
+  {
+    "id": "e2-96",
+    "lessonId": "2.13",
+    "kind": "tf",
+    "prompt": "Al volver del permiso por nacimiento, la persona trabajadora tiene derecho a su mismo puesto y jornada, si no pide reducción de jornada.",
+    "answer": true,
+    "explain": "Es la regla de reincorporación tras la suspensión del contrato."
+  },
+  {
+    "id": "e2-97",
+    "lessonId": "2.14",
+    "kind": "choice",
+    "prompt": "¿Qué artículo del Estatuto regula el despido disciplinario?",
+    "answer": 0,
+    "explain": "Los incumplimientos deben ser graves y culpables.",
+    "options": [
+      "Art. 54",
+      "Art. 29",
+      "Art. 37",
+      "Art. 8"
+    ]
+  },
+  {
+    "id": "e2-98",
+    "lessonId": "2.14",
+    "kind": "tf",
+    "prompt": "El despido disciplinario puede comunicarse verbalmente sin riesgo.",
+    "answer": false,
+    "explain": "Debe ser por escrito; si no, puede declararse improcedente."
+  },
+  {
+    "id": "e2-99",
+    "lessonId": "2.14",
+    "kind": "choice",
+    "prompt": "Si la carta de despido es defectuosa, el despido se califica:",
+    "answer": 0,
+    "explain": "Art. 55.4 del Estatuto.",
+    "options": [
+      "Improcedente",
+      "Procedente",
+      "Nulo siempre",
+      "Válido"
+    ]
+  },
+  {
+    "id": "e2-100",
+    "lessonId": "2.14",
+    "kind": "tf",
+    "prompt": "La empresa puede justificar el despido con hechos que no figuran en la carta.",
+    "answer": false,
+    "explain": "Solo puede justificarlo en los hechos imputados en la carta."
+  },
+  {
+    "id": "e2-101",
+    "lessonId": "2.14",
+    "kind": "number",
+    "prompt": "Tras declararse improcedente un despido, ¿de cuántos días dispone la empresa para elegir entre readmitir o indemnizar, desde la notificación de la sentencia?",
+    "answer": 5,
+    "explain": "Es la opción del art. 56 ET.",
+    "unit": "días"
+  },
+  {
+    "id": "e2-102",
+    "lessonId": "2.14",
+    "kind": "number",
+    "prompt": "¿Cuántos días de salario por año de servicio corresponden por el tiempo anterior al 12 de febrero de 2012 en un despido improcedente?",
+    "answer": 45,
+    "explain": "Con el límite de 720 días de salario en conjunto.",
+    "unit": "días"
+  },
+  {
+    "id": "e2-103",
+    "lessonId": "2.14",
+    "kind": "number",
+    "prompt": "Despido improcedente: salario diario 60 € y 4,25 años de antigüedad posteriores al 12-2-2012. ¿Qué indemnización corresponde?",
+    "answer": 8415,
+    "explain": "33 × 4,25 = 140,25 días. 140,25 × 60 = 8.415 €.",
+    "unit": "€"
+  },
+  {
+    "id": "e2-104",
+    "lessonId": "2.14",
+    "kind": "tf",
+    "prompt": "El finiquito incluye las vacaciones devengadas y no disfrutadas.",
+    "answer": true,
+    "explain": "También los salarios pendientes y la parte proporcional de las pagas extra."
+  },
+  {
+    "id": "e2-105",
+    "lessonId": "2.14",
+    "kind": "tf",
+    "prompt": "El finiquito y la indemnización por despido son lo mismo.",
+    "answer": false,
+    "explain": "El finiquito liquida lo devengado; la indemnización compensa el despido improcedente u objetivo."
   },
 ];
