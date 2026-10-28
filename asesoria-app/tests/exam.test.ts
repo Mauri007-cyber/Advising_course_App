@@ -6,15 +6,15 @@ const fake: Question[] = Array.from({ length: 12 }, (_, i) => ({
 }));
 vi.mock("../src/data/content", () => ({ bankOf: () => fake }));
 
-import { buildExam, EXAM_SIZE } from "../src/lib/exam";
+import { buildExam, examSize } from "../src/lib/exam";
 
 describe("buildExam con banco amplio", () => {
   it("tamano fijo, sin repetidos y con las falladas siempre dentro", () => {
     const failed = { f0: 1, f3: 2, f7: 1, f11: 1 };
     for (let n = 0; n < 50; n++) {
       const ids = buildExam("m1", failed).map((q) => q.id);
-      expect(ids).toHaveLength(EXAM_SIZE);
-      expect(new Set(ids).size).toBe(EXAM_SIZE);
+      expect(ids).toHaveLength(examSize("m1"));
+      expect(new Set(ids).size).toBe(examSize("m1"));
       for (const id of Object.keys(failed)) expect(ids).toContain(id);
     }
   });

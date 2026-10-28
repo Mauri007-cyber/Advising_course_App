@@ -1,4 +1,4 @@
-import { allLessons, findLesson, findModule, modules } from "../data/modules";
+import { findLesson, findModule, isReleased, modules, releasedLessons } from "../data/modules";
 import { examReady, lessonContent, questionById } from "../data/content";
 import { isCorrect, type Answer, type Question } from "../data/questions";
 import { grade, PASS, type GradeResult } from "./exam";
@@ -59,9 +59,9 @@ const passedModule = (s: State, id: string) => s.attempts.some((a) => a.moduleId
 export const badges: Badge[] = [
   { id: "first-lesson", title: "Primer paso", desc: "Completa tu primera lección.", test: (s) => Object.keys(s.done).length >= 1 },
   { id: "ten-lessons", title: "Constancia", desc: "Completa 10 lecciones.", test: (s) => Object.keys(s.done).length >= 10 },
-  ...modules.flatMap<Badge>((m) => [
-    { id: `mod-${m.id}`, title: `Módulo ${m.id.slice(1)} completo`, desc: `Completa todas las lecciones de «${m.title}».`, test: (s) => m.lessons.every((l) => s.done[l.id]) },
-    { id: `exam-${m.id}`, title: `Examen ${m.id.slice(1)} aprobado`, desc: `Aprueba el examen de «${m.title}».`, test: (s) => passedModule(s, m.id) },
+  ...modules.filter(isReleased).flatMap<Badge>((m) => [
+    { id: `mod-${m.id}`, title: `Módulo ${m.n} completo`, desc: `Completa todas las lecciones de «${m.title}».`, test: (s) => m.lessons.every((l) => s.done[l.id]) },
+    { id: `exam-${m.id}`, title: `Examen del módulo ${m.n} aprobado`, desc: `Aprueba el examen de «${m.title}».`, test: (s) => passedModule(s, m.id) },
   ]),
   { id: "perfect", title: "Matrícula de honor", desc: "Saca un 100 % en un examen.", test: (s) => s.attempts.some((a) => a.score === 100) },
   {
@@ -112,7 +112,7 @@ export function moduleStatus(s: State, moduleId: string) {
   };
 }
 
-export const nextLesson = (s: State) => allLessons.find((l) => !s.done[l.id]);
+export const nextLesson = (s: State) => releasedLessons.find((l) => !s.done[l.id]);
 
 function withoutReview(review: State["review"], lessonId: string) {
   const out: State["review"] = {};
@@ -126,7 +126,7 @@ function withoutReview(review: State["review"], lessonId: string) {
 export function completeLesson(id: string) {
   const s = getState();
   const lesson = findLesson(id);
-  if (!lesson || s.done[id]) return;
+  if (!lesson || s.done[id] || !isReleased(findModule(lesson.moduleId)!)) return;
   const next = { ...s, done: { ...s.done, [id]: Date.now() } };
   const mod = findModule(lesson.moduleId)!;
   const moduleDone = mod.lessons.every((l) => next.done[l.id]);

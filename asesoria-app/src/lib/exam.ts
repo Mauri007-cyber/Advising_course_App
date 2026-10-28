@@ -1,8 +1,12 @@
 import { bankOf } from "../data/content";
+import { findModule } from "../data/modules";
 import { isCorrect, type Answer, type Question } from "../data/questions";
 
 export const PASS = 70;
-export const EXAM_SIZE = 8;
+export const examSize = (moduleId: string) => {
+  const n = findModule(moduleId)?.lessons.length ?? 5;
+  return Math.min(15, Math.max(8, n + 3));
+};
 
 export interface GradeResult {
   score: number;
@@ -28,7 +32,7 @@ function shuffleOptions(q: Question): Question {
 
 export function buildExam(moduleId: string, failed: Record<string, number>): Question[] {
   const bank = bankOf(moduleId);
-  const n = Math.min(EXAM_SIZE, bank.length);
+  const n = Math.min(examSize(moduleId), bank.length);
   const again = shuffle(bank.filter((q) => failed[q.id]));
   const fresh = shuffle(bank.filter((q) => !failed[q.id]));
   return shuffle([...again, ...fresh].slice(0, n)).map(shuffleOptions);

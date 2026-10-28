@@ -303,7 +303,7 @@ export const m1Lessons: Record<string, LessonContent> = {
         "title": "Coordinar con Hacienda",
         "body": [
           "La baja en el censo de Hacienda se comunica con la declaración censal (modelo 036). La misma guía indica que su fecha debe coincidir con la de la baja en el RETA.",
-          "Para una persona física, el plazo general de baja censal es de un mes (lección 1.2)."
+          "Para una persona física, el plazo general de baja censal es de un mes (lección [[1.2]])."
         ]
       }
     ],
@@ -400,10 +400,10 @@ export const m1Lessons: Record<string, LessonContent> = {
       {
         "title": "Cerrar como autónomo",
         "body": [
-          "Baja en el RETA: tres días naturales desde el cese (lección 1.4).",
-          "Baja en el censo de Hacienda con la declaración censal, modelo 036 (lección 1.2).",
-          "Si hay trabajadores, sus bajas se presentan en seis días naturales desde el cese (lección 2.9).",
-          "El Sistema RED permite gestionar también la baja del Código de Cuenta de Cotización de la empresa (lección 2.7)."
+          "Baja en el RETA: tres días naturales desde el cese (lección [[1.4]]).",
+          "Baja en el censo de Hacienda con la declaración censal, modelo 036 (lección [[1.2]]).",
+          "Si hay trabajadores, sus bajas se presentan en seis días naturales desde el cese (lección [[2.9]]).",
+          "El Sistema RED permite gestionar también la baja del Código de Cuenta de Cotización de la empresa (lección [[2.7]])."
         ]
       },
       {
@@ -442,7 +442,7 @@ export const m1Lessons: Record<string, LessonContent> = {
         "title": "Hacienda y la Seguridad Social en el cierre",
         "body": [
           "Se presenta el modelo 036 de baja en el censo. Según fuentes secundarias, la baja en Hacienda debe presentarse en un mes desde la inscripción en el Registro Mercantil. Confirma el plazo en las instrucciones vigentes del modelo.",
-          "Las bajas de los trabajadores y del CCC se tramitan en la Seguridad Social con los plazos de las lecciones 2.7 y 2.9."
+          "Las bajas de los trabajadores y del CCC se tramitan en la Seguridad Social con los plazos de las lecciones [[2.7]] y [[2.9]]."
         ]
       }
     ],

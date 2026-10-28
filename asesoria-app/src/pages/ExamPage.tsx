@@ -1,11 +1,11 @@
 import { useState } from "react";
-import { findLesson, findModule } from "../data/modules";
+import { findLesson, findModule, lessonLabel } from "../data/modules";
 import { bankOf } from "../data/content";
 import { hasAnswer, isCorrect, type Answer, type Question } from "../data/questions";
 import { href } from "../lib/router";
 import { useStore } from "../lib/store";
 import { moduleStatus, submitExam } from "../lib/game";
-import { buildExam, EXAM_SIZE, PASS, type GradeResult } from "../lib/exam";
+import { buildExam, examSize, PASS, type GradeResult } from "../lib/exam";
 import { QuestionView } from "../components/QuestionView";
 import { Progress } from "../components/Progress";
 import { NotFound } from "../components/NotFound";
@@ -41,19 +41,19 @@ export function ExamPage({ id }: { id: string }) {
     return (
       <div className={`mod-${id}`}>
         {back}
-        <h1>Examen: {mod.title}</h1>
+        <h1>Examen del módulo {mod.n}: {mod.title}</h1>
         {!st.hasExam && <p className="lead">Este examen se publicará con el contenido del módulo.</p>}
         {st.hasExam && !st.unlocked && (
           <div className="alert">
             {st.pending.length > 0 ? (
               <>
                 <strong>Primero, repasa los temas que fallaste:</strong>
-                <ul>{st.pending.map((p) => <li key={p}><a href={href(`/l/${p}`)}>{p} {findLesson(p)?.title}</a></li>)}</ul>
+                <ul>{st.pending.map((p) => <li key={p}><a href={href(`/l/${p}`)}>{lessonLabel(p)} {findLesson(p)?.title}</a></li>)}</ul>
               </>
             ) : (
               <>
                 <strong>Aún te faltan lecciones por completar:</strong>
-                <ul>{missing.map((l) => <li key={l.id}><a href={href(`/l/${l.id}`)}>{l.id} {l.title}</a></li>)}</ul>
+                <ul>{missing.map((l) => <li key={l.id}><a href={href(`/l/${l.id}`)}>{lessonLabel(l.id)} {l.title}</a></li>)}</ul>
               </>
             )}
           </div>
@@ -61,7 +61,7 @@ export function ExamPage({ id }: { id: string }) {
         {st.unlocked && st.hasExam && (
           <>
             <p className="lead">
-              {Math.min(EXAM_SIZE, bankOf(id).length)} preguntas · aprobado con un {PASS} % · sin límite de intentos.
+              {Math.min(examSize(id), bankOf(id).length)} preguntas · aprobado con un {PASS} % · sin límite de intentos.
             </p>
             {repeats > 0 && <p>Incluye {repeats} pregunta(s) que fallaste antes: es la mejor forma de afianzarlas.</p>}
             <p>No verás las respuestas hasta el final. Tómate tu tiempo.</p>
@@ -102,7 +102,7 @@ export function ExamPage({ id }: { id: string }) {
       {weak.length > 0 && (
         <div className="alert">
           <strong>{passed ? "Para afinar, repasa:" : "Para repetirlo, repasa estos temas:"}</strong>
-          <ul>{weak.map((w) => <li key={w}><a href={href(`/l/${w}`)}>{w} {findLesson(w)?.title}</a></li>)}</ul>
+          <ul>{weak.map((w) => <li key={w}><a href={href(`/l/${w}`)}>{lessonLabel(w)} {findLesson(w)?.title}</a></li>)}</ul>
         </div>
       )}
       <h2>Revisión</h2>

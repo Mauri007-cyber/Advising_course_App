@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { allLessons, findLesson, findModule } from "../data/modules";
+import { findLesson, findModule, isReleased, lessonLabel, resolveRefs as r } from "../data/modules";
 import { lessonContent, type LessonContent } from "../data/content";
 import { hasAnswer, isCorrect, type Answer, type Question } from "../data/questions";
 import { href } from "../lib/router";
@@ -16,20 +16,20 @@ function Content({ c }: { c: LessonContent }) {
     <div className="prose">
       <section>
         <h2>Punto de partida</h2>
-        <p>{c.intro}</p>
+        <p>{r(c.intro)}</p>
       </section>
       <section>
         <h2>Paso a paso</h2>
         {c.steps.map((st) => (
           <div key={st.title}>
             <h3>{st.title}</h3>
-            <ul>{st.body.map((b) => <li key={b}>{b}</li>)}</ul>
+            <ul>{st.body.map((b) => <li key={b}>{r(b)}</li>)}</ul>
           </div>
         ))}
       </section>
       <section className="card example">
         <h2>Ejemplo resuelto: {c.example.title}</h2>
-        {c.example.body.map((b) => <p key={b}>{b}</p>)}
+        {c.example.body.map((b) => <p key={b}>{r(b)}</p>)}
       </section>
       <section>
         <h2>Consejos</h2>
@@ -37,7 +37,7 @@ function Content({ c }: { c: LessonContent }) {
           {c.tips.map((t) => (
             <div key={t.text} className={`tip tip-${t.kind}`}>
               <strong>{tipLabel[t.kind]}</strong>
-              <p>{t.text}</p>
+              <p>{r(t.text)}</p>
             </div>
           ))}
         </div>
@@ -107,13 +107,12 @@ function LessonView({ id }: { id: string }) {
   const c = lessonContent[id];
   const done = Boolean(s.done[id]);
   const reviewing = (s.review[mod.id] ?? []).includes(id);
-  const idx = allLessons.findIndex((l) => l.id === id);
-  const next = allLessons[idx + 1];
+  const next = mod.lessons[mod.lessons.findIndex((l) => l.id === id) + 1];
 
   return (
     <div className={`mod-${mod.id}`}>
       <a className="back" href={href(`/m/${mod.id}`)}>Volver al módulo</a>
-      <h1>{lesson.title}</h1>
+      <h1>{lessonLabel(id)} {lesson.title}</h1>
       <p className="lead">Revisión legal: {c?.reviewed ?? "pendiente"}.</p>
 
       {reviewing && (
@@ -136,6 +135,7 @@ function LessonView({ id }: { id: string }) {
           <>
             <p role="status">Lección completada. ¡Bien hecho!</p>
             {next && <a className="btn primary" href={href(`/l/${next.id}`)}>Siguiente: {next.title}</a>}
+            {!next && <a className="btn primary" href={href(`/m/${mod.id}`)}>Volver al módulo</a>}
           </>
         ) : (
           <button className="primary" onClick={() => completeLesson(id)}>Marcar como completada (+20 XP)</button>
@@ -146,6 +146,17 @@ function LessonView({ id }: { id: string }) {
 }
 
 export function LessonPage({ id }: { id: string }) {
-  if (!findLesson(id)) return <NotFound />;
+  const lesson = findLesson(id);
+  if (!lesson) return <NotFound />;
+  const mod = findModule(lesson.moduleId)!;
+  if (!isReleased(mod)) {
+    return (
+      <div className={`mod-${mod.id}`}>
+        <a className="back" href={href(`/m/${mod.id}`)}>Volver al módulo</a>
+        <h1>{lessonLabel(id)} {lesson.title}</h1>
+        <p className="alert">Esta lección se publicará en la fase {mod.release}.</p>
+      </div>
+    );
+  }
   return <LessonView key={id} id={id} />;
 }

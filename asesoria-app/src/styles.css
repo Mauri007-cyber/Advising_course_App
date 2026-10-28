@@ -178,3 +178,21 @@ fieldset:disabled { opacity: 1; }
 .auth { display: grid; gap: 1rem; max-width: 24rem; }
 .auth label { display: grid; gap: 0.3rem; font-weight: 600; }
 .auth input { font: inherit; padding: 0.5rem 0.7rem; border: 2px solid var(--line); border-radius: 6px; background: var(--surface); color: var(--text); }
+
+.mod-m0 { --mc: #455a64; }
+.mod-m7 { --mc: #7b3fa0; }
+.mod-m8 { --mc: #2e6b2f; }
+.mod-m9 { --mc: #00697a; }
+.mod-m10 { --mc: #8d2c2c; }
+.mod-m11 { --mc: #5d4037; }
+.mod-m12 { --mc: #6a4c93; }
+.mod-m13 { --mc: #0d5c8c; }
+.mod-m14 { --mc: #7a5c00; }
+.mod-m15 { --mc: #8e2a66; }
+.mod-m16 { --mc: #37474f; }
+.mod-m17 { --mc: #7c2d12; }
+[class*="mod-"] progress::-webkit-progress-value { background: var(--mc); }
+[class*="mod-"] progress::-moz-progress-bar { background: var(--mc); }
+.plan { margin: 1.5rem 0 0; color: var(--muted); }
+.soon { opacity: 0.85; }
+.soon .row-count { white-space: nowrap; }

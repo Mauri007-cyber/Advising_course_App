@@ -723,7 +723,7 @@ export const m2Lessons: Record<string, LessonContent> = {
         "title": "Cómo se tramita",
         "body": [
           "Por el Sistema RED, en el servicio de Inscripción y Afiliación de RED Directo, que permite además consultar los trabajadores en alta en un CCC.",
-          "Después del alta hay que dar de alta o comunicar el contrato de trabajo (lección 2.10)."
+          "Después del alta hay que dar de alta o comunicar el contrato de trabajo (lección [[2.10]])."
         ]
       }
     ],
@@ -825,7 +825,7 @@ export const m2Lessons: Record<string, LessonContent> = {
         "title": "Quién tiene la obligación",
         "body": [
           "En el Régimen General, el empresario está obligado a presentar el alta, la baja y las variaciones de datos de sus trabajadores.",
-          "En el RETA es el propio autónomo quien se da de alta y de baja y comunica sus variaciones (lección 1.4)."
+          "En el RETA es el propio autónomo quien se da de alta y de baja y comunica sus variaciones (lección [[1.4]])."
         ]
       },
       {
@@ -833,7 +833,7 @@ export const m2Lessons: Record<string, LessonContent> = {
         "body": [
           "El Real Decreto 643/2026, de 29 de julio, publicado en el BOE el 30 de julio de 2026, modificó el art. 32.3 del Reglamento general sobre inscripción de empresas y afiliación (Real Decreto 84/1996).",
           "Desde el 1 de agosto de 2026, las solicitudes de baja y de variaciones de datos de los trabajadores deben presentarse dentro de los seis días naturales siguientes al cese en el trabajo o a aquel en que se produzca la variación. Antes eran tres.",
-          "El cambio afecta a los trabajadores por cuenta ajena. El plazo de baja de un autónomo en el RETA sigue siendo el de la lección 1.4."
+          "El cambio afecta a los trabajadores por cuenta ajena. El plazo de baja de un autónomo en el RETA sigue siendo el de la lección [[1.4]]."
         ]
       },
       {
@@ -1072,7 +1072,7 @@ export const m2Lessons: Record<string, LessonContent> = {
       {
         "title": "De bruto a líquido",
         "body": [
-          "Ya conoces la estructura del recibo de salarios (lección 2.2). Las dos grandes deducciones son la aportación del trabajador a la Seguridad Social y la retención del IRPF.",
+          "Ya conoces la estructura del recibo de salarios (lección [[2.2]]). Las dos grandes deducciones son la aportación del trabajador a la Seguridad Social y la retención del IRPF.",
           "La empresa, además, paga su propia cotización, que no aparece como deducción al trabajador pero sí informa el recibo."
         ]
       },

@@ -1,4 +1,4 @@
-import { allLessons, findLesson, modules } from "../data/modules";
+import { findLesson, formatHours, isReleased, lessonLabel, levelNames, modules, moduleMinutes, releasedLessons, releasedMinutes, totalMinutes, type Level } from "../data/modules";
 import { href } from "../lib/router";
 import { useStore } from "../lib/store";
 import { badges, currentStreak, dayKey, moduleStatus, nextLesson, rankInfo } from "../lib/game";
@@ -10,7 +10,9 @@ export function Dashboard() {
   const s = useStore();
   const info = rankInfo(s.xp);
   const streak = currentStreak(s);
-  const count = allLessons.filter((l) => s.done[l.id]).length;
+  const count = releasedLessons.filter((l) => s.done[l.id]).length;
+  const released = modules.filter(isReleased);
+  const upcoming = modules.filter((m) => !isReleased(m));
   const next = nextLesson(s);
   const pending = Object.values(s.review).flat();
   const due = dueIds(s.srs, dayKey()).length;
@@ -25,7 +27,7 @@ export function Dashboard() {
           {s.xp} XP · {info.next ? `te faltan ${info.left} para ser ${info.next.name}` : "has alcanzado el máximo rango"}
         </p>
         <ul className="hero-stats">
-          <li><strong>{count}/{allLessons.length}</strong> lecciones</li>
+          <li><strong>{count}/{releasedLessons.length}</strong> lecciones</li>
           <li><strong>{streak}</strong> {streak === 1 ? "día de racha" : "días de racha"}</li>
           <li><strong>{Object.keys(s.badges).length}/{badges.length}</strong> insignias</li>
         </ul>
@@ -41,7 +43,7 @@ export function Dashboard() {
           <strong>Tienes repasos pendientes.</strong> Son los temas que más te costaron en el examen:
           <ul>
             {pending.map((id) => (
-              <li key={id}><a href={href(`/l/${id}`)}>{id} {findLesson(id)?.title}</a></li>
+              <li key={id}><a href={href(`/l/${id}`)}>{lessonLabel(id)} {findLesson(id)?.title}</a></li>
             ))}
           </ul>
         </div>
@@ -55,24 +57,49 @@ export function Dashboard() {
 
       <h2>Módulos</h2>
       <ul className="grid">
-        {modules.map((m) => {
+        {released.map((m) => {
           const st = moduleStatus(s, m.id);
           const state = st.passed ? `Examen aprobado (${st.best} %)` : st.hasExam ? (st.unlocked ? "Examen disponible" : "Examen bloqueado") : "Examen próximamente";
           return (
             <li key={m.id} className={`card mcard mod-${m.id}`}>
               <a href={href(`/m/${m.id}`)}>
-                <span className="band"><Icon name={m.id} /> Módulo {m.id.slice(1)}</span>
+                <span className="band"><Icon name={m.id} /> Módulo {m.n}</span>
                 <span className="mbody">
                   <span className="row-title">{m.title}</span>
                   <span className="row-meta">{m.summary}</span>
                   <Progress done={st.lessonsDone} total={st.total} label={`Progreso de ${m.title}`} />
-                  <span className="row-meta">{st.lessonsDone}/{st.total} lecciones · {state}</span>
+                  <span className="row-meta">{st.lessonsDone}/{st.total} lecciones · {formatHours(moduleMinutes(m))} · {state}</span>
                 </span>
               </a>
             </li>
           );
         })}
       </ul>
+
+      <h2>Plan del curso</h2>
+      <p className="lead">
+        Publicadas {formatHours(releasedMinutes)} de un plan completo de {formatHours(totalMinutes)}. El resto se irá publicando por fases.
+      </p>
+      {([1, 2, 3] as Level[]).map((lv) => {
+        const list = upcoming.filter((m) => m.level === lv);
+        if (!list.length) return null;
+        return (
+          <section key={lv}>
+            <h3>{levelNames[lv]}</h3>
+            <ul className="ledger soon">
+              {list.map((m) => (
+                <li key={m.id}>
+                  <a href={href(`/m/${m.id}`)}>
+                    <span className="row-title">Módulo {m.n}. {m.title}</span>
+                    <span className="row-meta">{m.lessons.length} lecciones · {formatHours(moduleMinutes(m))}</span>
+                    <span className="row-count">Fase {m.release}</span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </section>
+        );
+      })}
     </>
   );
 }

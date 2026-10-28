@@ -13,7 +13,7 @@ const paths: Record<string, string> = {
 export function Icon({ name }: { name: string }) {
   return (
     <svg className="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <path d={paths[name] ?? paths.check} />
+      <path d={paths[name] ?? paths.m4} />
     </svg>
   );
 }

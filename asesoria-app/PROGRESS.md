@@ -118,3 +118,36 @@ Otras unidades del ciclo (no investigadas aun): Gestion de recursos humanos, Ges
 - L2.14 hecha (despido disciplinario ET 54-56, 59.3, finiquito). Fuentes secundarias (Legalitas, INEAF, Loentiendo, Captain Legal, Gestoria247). 19 de 51 lecciones. M2: 14/17 (faltan 2.15 AT/EP, 2.16 jornada/vacaciones/convenios, 2.17 LinkedIn).
 - Medicion real: media ~480 palabras de texto por leccion (+ ejemplo + 4 preguntas de mini-test + 7-9 de banco).
 - Estimacion dada al usuario: 35 min/leccion solo en app, 75 min si se consultan las fuentes. Total curso completo ~40-75 h (~2-4 % de un master de 60 ECTS = 1.500-1.800 h segun el marco).
+
+## REESTRUCTURACION A ~150 h (2026-10-25) - LEER ANTES DE ANADIR CONTENIDO
+- Plan: 18 modulos (0-17), 125 lecciones, 150,2 h totales (lecciones + 15 min de examen por modulo). Tres niveles: 1 Fundamentos (m0-m4), 2 Profesional (m5-m12), 3 Experto (m13-m17). Datos en src/data/modules.ts (generado desde /tmp/gen/gen.py, ya no hace falta).
+- PUBLICACION POR FASES: CURRENT_RELEASE en modules.ts (ahora 1). Cada modulo tiene `release`. Solo los modulos con release <= CURRENT_RELEASE son accesibles; el resto sale como "Plan del curso" (hoja de ruta) y su examen/lecciones estan bloqueados.
+  - Fase 1 (~14,2 h, PUBLICADA): m1 Inicio de actividad (5 lecc.) + m2 Laboral I (8 lecc.). Ambos con examen.
+  - Fase 2: m0 Fundamentos, m3 Contabilidad I, m4 Fiscal I. Fase 3: m5 IRPF, m6 IS. Fase 4: m7 Laboral II, m8 Laboral III. Fase 5: m9 Contab. II, m10 Procedimiento. Fase 6: m11 Mercantil, m12 Despacho. Fase 7: m13 Patrimonial/territorial, m14 Internacional. Fase 8: m15 Analisis/planificacion, m16 Compliance, m17 Casos y proyecto final.
+- IDS vs ETIQUETAS: los ids de leccion son estables (1.1, 2.4, x3-1...) pero la etiqueta visible es POSICIONAL = `${modulo.n}.${posicion}` (lessonLabel). En el texto de contenido, las referencias a otras lecciones se escriben como [[id]] y se resuelven al mostrar (resolveRefs). Un test valida que todas existan.
+- BANCO: ahora bankOf(moduloId) filtra por lessonId (membresia del modulo), no por archivo. Los archivos mN.ts son solo almacen; cualquier banco sirve a cualquier modulo.
+- Contenido YA escrito pero en fases posteriores: 2.4 IT, 2.12 permisos, 2.13 nacimiento, 2.5 despido objetivo, 2.14 disciplinario (todos en m7, fase 4); 2.6 empleabilidad (m12, fase 6). Estan listos para cuando se publique su fase.
+- Lecciones nuevas usan ids `x{n}-{k}` (p. ej. x3-1). Crear contenido con scripts/add_lesson.py: add("mN", {id: leccion}, banco). El archivo mN.ts se crea solo (usar el id del modulo; las lecciones pueden ser de cualquier modulo mientras el id exista en modules.ts).
+- Tamano del examen: examSize(modulo) = clamp(lecciones+3, 8, 15). MIN_BANK=12.
+- Para publicar una fase: subir CURRENT_RELEASE y comprobar `npm test` (exige contenido completo + examen en todo lo publicado).
+- Siguiente trabajo sugerido: completar contenido de fase 2 (m0, m3, m4) o terminar m7 (faltan x7-1 AT/EP, x7-2 jornada, x7-3 vacaciones, x7-4 convenios, x7-5 suspension/modificaciones, x7-6 ERTE).
+
+## Fase 2 en curso (2026-10-25) - escribir m0, m3, m4 (el usuario pidio "escribe ya los modulos 0, 3 y 4")
+- HECHO m0 (7 lecciones x0-1,2,4,5,6,7,8; banco 49) y m3 (7 lecciones x3-1..x3-7; banco 49). Fuentes: Codigo Civil/Comercio, LGT (arts 20,21,50,55,56,58,88,89 via iberley/hacienda.gob.es), Ley 39/2015 art 30 (via sedes DGT/Defensa), AEAT libros obligatorios (oficial), PGC (copia BOE), BOE faq legislacion consolidada (oficial). Muchas fuentes secundarias: contrastar con BOE cuando se pueda.
+- PENDIENTE m4 Fiscal I (9 lecciones x4-1..x4-9): acceso digital AEAT, sistema tributario/LGT, obligados/domicilio/residencia, IVA I-IV, facturacion (RD 1619/2012), factura electronica y Veri*factu (VERIFICAR fechas vigentes: aplazamiento RDL 15/2025, RD 254/2025, Orden HAC/1177/2024).
+- Para activar fase 2: CURRENT_RELEASE=2 en modules.ts cuando m4 este completo (la fase 2 incluye m0, m3 y m4; npm test exige contenido y examen completos en todo lo publicado). Cambiar tambien test "primera publicacion ~15 h" si se publica la fase 2.
+- Helpers de escritura de lotes: /tmp/h.py (S,Q,C,T,N,tip,step) - recrear si se pierde; ver patron en tests y en m0/m3.
+
+## Actualizacion m4 (2026-10-25)
+- m4 hechas: x4-1 (acceso digital), x4-2 (sistema tributario), x4-3 (obligados/domicilio), x4-4 (IVA I), x4-5 (IVA II), x4-6 (IVA III + 303). Fuentes oficiales AEAT: Manual practico IVA 2024 (devengo, plazos 303), Manual IVA 2023 (deducciones), ZP01 apoderamientos.
+- PENDIENTES m4: x4-7 IVA IV (recargo equivalencia, criterio de caja, simplificado), x4-8 facturacion (RD 1619/2012, libros registro IVA), x4-9 factura electronica y Veri*factu (verificar estado actual a 2026-10-25: RDL 15/2025? RD 254/2025? Orden HAC/1177/2024?).
+- Con x4-7..9 completos, m0+m3+m4 estan listos: subir CURRENT_RELEASE a 2 y ajustar el test "primera publicacion" (ahora exige release 1 ~15 h).
+
+## FASE 2 CONTENIDO COMPLETO (2026-10-25): m0 (7), m3 (7), m4 (9) = 23 lecciones escritas
+- m4: x4-7 (regimenes especiales: AEAT Manual IVA 2024 oficial + secundarias recargo), x4-8 (facturacion RD 1619/2012, fuentes secundarias; conservacion 6 anos mercantil / 4 fiscal, sin cifra oficial leida), x4-9 (Veri*factu/e-factura).
+- DATO CRITICO x4-9: BOE vigente = RDL 15/2025 (1-1-2027 IS, 1-7-2027 resto). El 5-10-2026 Hacienda ANUNCIO (nota informativa) aplazar a octubre 2028 para <=8 M EUR; AUN SIN NORMA (SAPI: RD 1007/2023 consolidado sigue con 2027). Factura electronica B2B: >8 M EUR octubre 2027; resto octubre 2028; Orden HAC/1028/2026 publicada. REVISAR en cuanto salga la norma (actualizar lesson x4-9, sus preguntas e4-57..63 y c4.9-*).
+- Titulos cambiados: x4-8 "Facturacion: tipos de factura, contenido y rectificativas"; x4-9 "Factura electronica y Veri*factu: calendario y requisitos". Libros registro IVA y SII NO cubiertos: anadir leccion futura si se quiere.
+- CURRENT_RELEASE sigue en 1 (decision del usuario). Test "preparacion de fases futuras" garantiza que la fase 2 (m0,m3,m4) ya tiene contenido y banco >=12. Para publicar la fase 2: CURRENT_RELEASE=2 y actualizar el test de primera publicacion (hoy exige release 1 ~15 h).
+- Horas fase 2 segun plan: m0 ~7,5 h (7 lecc.), m3 ~9,3 h, m4 ~11,3 h (ver moduleMinutes).
+- Verificacion pendiente (fuentes secundarias): LGT arts 2,17,20,21,35,48,50,55,56,58,88,89 (contraste BOE), Ley 37/1992 (arts 4,5,7,8,11,75,84,88,90,91,92-114) con texto BOE, RD 1619/2012 con texto BOE, PGC cuadro de cuentas con texto BOE.
+- Siguiente trabajo sugerido: m5 IRPF (x5-1..7) y m6 IS (x6-1..5), fase 3; o completar m7 Laboral II (faltan x7-1..x7-6).
