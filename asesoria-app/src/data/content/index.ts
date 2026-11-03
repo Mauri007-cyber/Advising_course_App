@@ -6,12 +6,13 @@ import { m2Lessons, m2Bank } from "./m2";
 import { m0Lessons, m0Bank } from "./m0";
 import { m3Lessons, m3Bank } from "./m3";
 import { m4Lessons, m4Bank } from "./m4";
+import { m5Lessons, m5Bank } from "./m5";
 
 export type { LessonContent, Tip, Source } from "./types";
 
-export const lessonContent: Record<string, LessonContent> = { ...m1Lessons, ...m2Lessons, ...m0Lessons, ...m3Lessons, ...m4Lessons };
+export const lessonContent: Record<string, LessonContent> = { ...m1Lessons, ...m2Lessons, ...m0Lessons, ...m3Lessons, ...m4Lessons, ...m5Lessons };
 
-const banks: Record<string, Question[]> = { m1: m1Bank, m2: m2Bank, m0: m0Bank, m3: m3Bank, m4: m4Bank };
+const banks: Record<string, Question[]> = { m1: m1Bank, m2: m2Bank, m0: m0Bank, m3: m3Bank, m4: m4Bank, m5: m5Bank };
 export const MIN_BANK = 12;
 const allBank: Question[] = Object.values(banks).flat();
 export const bankOf = (moduleId: string) => {

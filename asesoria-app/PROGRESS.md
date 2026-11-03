@@ -151,3 +151,18 @@ Otras unidades del ciclo (no investigadas aun): Gestion de recursos humanos, Ges
 - Horas fase 2 segun plan: m0 ~7,5 h (7 lecc.), m3 ~9,3 h, m4 ~11,3 h (ver moduleMinutes).
 - Verificacion pendiente (fuentes secundarias): LGT arts 2,17,20,21,35,48,50,55,56,58,88,89 (contraste BOE), Ley 37/1992 (arts 4,5,7,8,11,75,84,88,90,91,92-114) con texto BOE, RD 1619/2012 con texto BOE, PGC cuadro de cuentas con texto BOE.
 - Siguiente trabajo sugerido: m5 IRPF (x5-1..7) y m6 IS (x6-1..5), fase 3; o completar m7 Laboral II (faltan x7-1..x7-6).
+
+## m5 IRPF en curso (2026-10-25)
+- Hechas: x5-1 (sujetos, residencia, obligacion de declarar Renta 2025; fuentes OFICIALES AEAT), x5-2 (rendimientos del trabajo; fuentes DGT/CEF/INEAF; sin cifras de reduccion art. 20 por no estar verificadas).
+- Pendientes m5: x5-3 capital inmobiliario/mobiliario, x5-4 actividades economicas (directa/objetiva), x5-5 ganancias y perdidas, x5-6 base/cuota/deducciones/modelo 100 (tarifas 2025 ahorro cambiaron: "modificacion tipo impositivo rentas del ahorro" 2025), x5-7 retenciones 111/115/190/180.
+- Nota: AEAT Manual practico Renta 2025 (sede.agenciatributaria.gob.es/.../irpf-2025/...) es la mejor fuente oficial; buscar con "Manual practico de Renta 2025" + tema.
+
+## m5 IRPF: x5-1, x5-2, x5-3 hechas (2026-10-25)
+- x5-3: alquiler (reducciones 90/70/60/50 Ley 12/2023, AEAT Manual Renta 2025 oficial + DGT) y capital mobiliario (escala ahorro 2025: 19/21/23/27/30; CNMV oficial). Nota: el tipo maximo del ahorro es 30 % desde 2025 (antes 28 %): varias fuentes secundarias aun dicen 28 %.
+- AVISO: iberley mostro un "Articulo 32 TR. Ley IRPF" => puede existir un Texto Refundido nuevo del IRPF con numeracion distinta. Antes de citar articulos del IRPF en lecciones futuras, comprobar si hay texto refundido vigente (buscar "texto refundido Ley del IRPF 2026").
+- Pendientes m5: x5-4 actividades economicas, x5-5 ganancias/perdidas, x5-6 base/cuota/deducciones/modelo 100, x5-7 retenciones 111/115/190/180. Luego m6 IS.
+
+## m5 IRPF COMPLETO (2026-10-25): x5-1..x5-7 (7 lecciones, banco 49)
+- x5-4 (actividades economicas; AEAT Modelo 100 2025 oficial; 5 % dificil justificacion con tope 2.000 EUR en 2025, fue 7 % en 2024), x5-5 (ganancias/perdidas; AEAT + DGT), x5-6 (base/cuota/modelo 100: minimo 5.550, descendientes 2.400/2.700/4.000/4.500, escala combinada 19-47 %, plazos Renta 2025 8-abril a 30-junio-2026; fuentes secundarias + AEAT minimo contribuyente), x5-7 (111/115/190/180; fuentes secundarias, sin pagina oficial leida).
+- Verificar con BOE/AEAT: tipos retencion (15/7/19 %), plazos 190/180, limite 6 M EUR/ mensual, reducciones art 20/18, escala autonomica de cada comunidad.
+- Siguiente: m6 IS (x6-1..x6-5): sujetos, base imponible, cuota, 200/202, modelos informativos 347/349. Luego m7 laboral II pendiente (x7-1..x7-6).
