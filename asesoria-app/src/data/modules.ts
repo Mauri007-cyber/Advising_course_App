@@ -16,7 +16,7 @@ export interface Module {
   lessons: Lesson[];
 }
 
-export const CURRENT_RELEASE = 1;
+export const CURRENT_RELEASE = 2;
 export const EXAM_MINUTES = 15;
 
 export const levelNames: Record<Level, string> = {
@@ -349,6 +349,7 @@ export const resolveRefs = (text: string) => text.replace(/\[\[([^\]]+)\]\]/g, (
 
 export const moduleMinutes = (m: Module) => m.lessons.reduce((a, l) => a + l.minutes, 0) + EXAM_MINUTES;
 export const totalMinutes = modules.reduce((a, m) => a + moduleMinutes(m), 0);
+export const phaseMinutes = (phase: number) => modules.filter((m) => m.release <= phase).reduce((a, m) => a + moduleMinutes(m), 0);
 export const releasedMinutes = modules.filter(isReleased).reduce((a, m) => a + moduleMinutes(m), 0);
 
 export function formatHours(minutes: number) {

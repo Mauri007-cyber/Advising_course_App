@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { allLessons, CURRENT_RELEASE, isReleased, lessonLabel, modules, releasedMinutes, totalMinutes } from "../src/data/modules";
+import { allLessons, CURRENT_RELEASE, isReleased, lessonLabel, modules, phaseMinutes, releasedMinutes, totalMinutes } from "../src/data/modules";
 import { bankOf, examReady, lessonContent, questionById } from "../src/data/content";
 import { isCorrect, type Question } from "../src/data/questions";
 
@@ -20,10 +20,11 @@ describe("plan del curso", () => {
     expect(totalMinutes / 60).toBeLessThan(156);
   });
 
-  it("la primera publicacion ronda las 15 horas", () => {
-    expect(CURRENT_RELEASE).toBe(1);
-    expect(releasedMinutes / 60).toBeGreaterThan(13.5);
-    expect(releasedMinutes / 60).toBeLessThan(16);
+  it("la fase 1 ronda las 15 horas y la publicada coincide con la fase actual", () => {
+    expect(phaseMinutes(1) / 60).toBeGreaterThan(13.5);
+    expect(phaseMinutes(1) / 60).toBeLessThan(16);
+    expect(CURRENT_RELEASE).toBeGreaterThanOrEqual(2);
+    expect(releasedMinutes).toBe(phaseMinutes(CURRENT_RELEASE));
   });
 
   it("los niveles avanzan con las fases", () => {

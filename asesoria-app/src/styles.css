@@ -196,3 +196,5 @@ fieldset:disabled { opacity: 1; }
 .plan { margin: 1.5rem 0 0; color: var(--muted); }
 .soon { opacity: 0.85; }
 .soon .row-count { white-space: nowrap; }
+
+.note { color: var(--muted); font-size: 0.9rem; }

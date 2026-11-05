@@ -5,5 +5,5 @@ const sub = (cb: () => void) => {
   return () => removeEventListener("hashchange", cb);
 };
 
-export const useRoute = () => useSyncExternalStore(sub, () => location.hash.slice(1) || "/");
+export const useRoute = () => useSyncExternalStore(sub, () => location.hash.slice(1) || "/", () => "/");
 export const href = (path: string) => `#${path}`;

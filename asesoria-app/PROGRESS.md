@@ -166,3 +166,15 @@ Otras unidades del ciclo (no investigadas aun): Gestion de recursos humanos, Ges
 - x5-4 (actividades economicas; AEAT Modelo 100 2025 oficial; 5 % dificil justificacion con tope 2.000 EUR en 2025, fue 7 % en 2024), x5-5 (ganancias/perdidas; AEAT + DGT), x5-6 (base/cuota/modelo 100: minimo 5.550, descendientes 2.400/2.700/4.000/4.500, escala combinada 19-47 %, plazos Renta 2025 8-abril a 30-junio-2026; fuentes secundarias + AEAT minimo contribuyente), x5-7 (111/115/190/180; fuentes secundarias, sin pagina oficial leida).
 - Verificar con BOE/AEAT: tipos retencion (15/7/19 %), plazos 190/180, limite 6 M EUR/ mensual, reducciones art 20/18, escala autonomica de cada comunidad.
 - Siguiente: m6 IS (x6-1..x6-5): sujetos, base imponible, cuota, 200/202, modelos informativos 347/349. Luego m7 laboral II pendiente (x7-1..x7-6).
+
+## FASE 2 PUBLICADA (2026-10-25): CURRENT_RELEASE = 2
+- Publicados: m0, m1, m2, m3, m4 = Nivel 1 completo: 36 lecciones, ~40,5 h, 5 examenes.
+- Tests: 31 (anadido tests/render.test.tsx: renderiza con renderToString dashboard, modulos, todas las lecciones publicadas, examenes y pantallas generales; exige que no queden tokens [[...]] sin resolver). Hooks de store/router/toast/cloud ahora llevan getServerSnapshot (necesario para SSR en tests).
+- Test de fase: phaseMinutes(1) ~14,2 h; releasedMinutes == phaseMinutes(CURRENT_RELEASE).
+- Contenido ya escrito pero NO publicado: m5 IRPF completo (fase 3), contenido suelto de m7 (2.4, 2.5, 2.12, 2.13, 2.14) y m12 (2.6).
+- Para publicar fase 3: terminar m6 (IS: x6-1..x6-5) y poner CURRENT_RELEASE=3. El test "todo lo publicado tiene contenido y examen" lo exige.
+
+## Login por usuario y contrasena (2026-10-25)
+- Implementado: src/lib/username.ts (validacion y correo sintetico usuario@VITE_AUTH_EMAIL_DOMAIN, defecto example.com), cloud.signIn/signUp por usuario, AccountPage con usuario/contrasena (min 8, max 72), tests/username.test.ts (35 tests en total).
+- Requisitos en Supabase: desactivar "Confirm email"; ejecutar supabase/schema.sql; opcionalmente desactivar altas nuevas tras crear el usuario. Sin correo NO hay recuperacion de contrasena (avisado en la pantalla y README).
+- Verificado en docs de Supabase: con Confirm email desactivado signUp devuelve user y session; error "User already registered" si existe. NO verificado: si Supabase rechaza algun dominio sintetico concreto (si fallara con example.com, usar un dominio propio en VITE_AUTH_EMAIL_DOMAIN). NO probado contra un proyecto real de Supabase.

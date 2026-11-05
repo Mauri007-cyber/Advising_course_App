@@ -31,5 +31,6 @@ export const useToasts = () =>
       subs.add(f);
       return () => subs.delete(f);
     },
+    () => list,
     () => list
   );

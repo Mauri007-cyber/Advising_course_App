@@ -142,7 +142,7 @@ export function setState(patch: Partial<State>) {
   subs.forEach((fn) => fn());
 }
 
-export const useStore = () => useSyncExternalStore(subscribe, getState);
+export const useStore = () => useSyncExternalStore(subscribe, getState, getState);
 
 export const exportJson = () => JSON.stringify(state, null, 2);
 
