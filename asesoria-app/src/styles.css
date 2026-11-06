@@ -198,3 +198,6 @@ fieldset:disabled { opacity: 1; }
 .soon .row-count { white-space: nowrap; }
 
 .note { color: var(--muted); font-size: 0.9rem; }
+
+.about { padding-left: 1.2rem; }
+code { background: var(--surface); border: 1px solid var(--line); border-radius: 4px; padding: 0 0.3em; font-size: 0.9em; }

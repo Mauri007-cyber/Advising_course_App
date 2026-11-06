@@ -15,7 +15,8 @@ export function AccountPage() {
     return (
       <>
         <h1>Cuenta</h1>
-        <p className="lead">La sincronización en la nube no está configurada. Tu progreso se guarda solo en este dispositivo; usa Ajustes para exportar una copia.</p>
+        <p className="lead">Esta compilación no tiene la sincronización en la nube configurada, por eso no hay formulario de acceso. Tu progreso se guarda solo en este dispositivo; usa Ajustes para exportar una copia.</p>
+        <p>Para activarla, crea un archivo <code>.env</code> con <code>VITE_SUPABASE_URL</code> y <code>VITE_SUPABASE_ANON_KEY</code> y vuelve a compilar la aplicación. Los pasos completos están en el README.</p>
       </>
     );
   }

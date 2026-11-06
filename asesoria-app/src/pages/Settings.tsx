@@ -1,4 +1,7 @@
 import { useState, type ChangeEvent } from "react";
+import { CURRENT_RELEASE, formatHours, releasedMinutes } from "../data/modules";
+import { cloudEnabled } from "../lib/cloud";
+import { forceRefresh } from "../lib/pwa";
 import { exportJson, importJson, resetAll, setState, useStore, type FontSize, type Theme } from "../lib/store";
 
 const themes: [Theme, string][] = [["auto", "Automático"], ["light", "Claro"], ["dark", "Oscuro"]];
@@ -67,6 +70,19 @@ export function Settings() {
           <button className="danger" onClick={reset}>Borrar progreso</button>
         </div>
         <p role="status">{msg}</p>
+      </fieldset>
+
+      <fieldset>
+        <legend>Acerca de esta versión</legend>
+        <ul className="about">
+          <li>Versión {__APP_VERSION__}, compilada el {__APP_BUILD__}.</li>
+          <li>Contenido publicado: hasta la fase {CURRENT_RELEASE} ({formatHours(releasedMinutes)} de estudio).</li>
+          <li>Sincronización en la nube: {cloudEnabled ? "configurada" : "no configurada en esta compilación"}.</li>
+        </ul>
+        <p>Si no ves los cambios más recientes, borra la copia guardada de la aplicación y vuelve a cargarla. Tu progreso no se borra.</p>
+        <div className="actions">
+          <button onClick={() => void forceRefresh()}>Buscar actualización y recargar</button>
+        </div>
       </fieldset>
     </>
   );

@@ -35,3 +35,7 @@ Sin configuración, todo funciona en el dispositivo (localStorage). Para guardar
 5. Cuando hayas creado tu usuario, desactiva el registro de usuarios nuevos en los ajustes de Auth para que nadie más pueda crear cuentas.
 
 Cómo funciona: el nombre de usuario se convierte en un correo interno (`usuario@VITE_AUTH_EMAIL_DOMAIN`, por defecto `example.com`) que nunca recibe mensajes. Consecuencia: no hay recuperación de contraseña. Exporta copias del progreso desde Ajustes.
+
+## Si no ves los cambios
+
+Es una PWA y guarda una copia para funcionar sin conexión. En Ajustes, «Acerca de esta versión» muestra la versión, la fecha de compilación, la fase de contenido publicada y si la nube está configurada. El botón «Buscar actualización y recargar» borra la copia guardada de la aplicación (no el progreso). Las claves de Supabase se leen al compilar: tras cambiar `.env` hay que volver a ejecutar `npm run build`.

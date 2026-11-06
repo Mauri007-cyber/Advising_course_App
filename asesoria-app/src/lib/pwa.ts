@@ -23,3 +23,19 @@ export function onSwUpdate(fn: () => void) {
   addEventListener(UPDATE_EVENT, fn);
   return () => removeEventListener(UPDATE_EVENT, fn);
 }
+
+export async function forceRefresh() {
+  try {
+    const regs = (await navigator.serviceWorker?.getRegistrations()) ?? [];
+    await Promise.all(regs.map((r) => r.unregister()));
+  } catch {
+    /* sin service worker */
+  }
+  try {
+    const keys = await caches.keys();
+    await Promise.all(keys.map((k) => caches.delete(k)));
+  } catch {
+    /* sin cache */
+  }
+  location.reload();
+}
