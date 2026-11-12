@@ -183,3 +183,12 @@ Otras unidades del ciclo (no investigadas aun): Gestion de recursos humanos, Ges
 - El sistema de ficheros se reinicio: /home/claude/asesoria-app desaparecio. Se restauro desde /mnt/user-data/outputs/asesoria-app.zip (ultimo entregado, 5-nov) y npm install. LECCION: el zip de outputs ES la copia de seguridad; entregar zip tras cada bloque de trabajo.
 - Usuario reporto "no me ha cambiado nada". Hipotesis: copia PWA en cache (service worker) y/o build sin .env (Cuenta sin formulario). Anadido: Ajustes > "Acerca de esta version" (version, fecha de build, fase publicada, estado de la nube) + boton "Buscar actualizacion y recargar" (desregistra SW y borra caches, NO borra progreso); Cuenta explica por que no hay formulario; cache del SW v3; version 0.3.0; src/env.d.ts declara __APP_VERSION__/__APP_BUILD__.
 - Pendiente de respuesta del usuario: como ejecuta la app (npm run dev / build local / desplegada) y si creo .env antes de compilar.
+
+## Despliegue (2026-11-06)
+- El usuario despliega con Vercel desde GitHub. Causa mas probable de "no veo cambios": (a) no subio el zip nuevo al repo / no hubo redeploy, (b) VITE_SUPABASE_* no definidas en Vercel (el .env no se sube) => Cuenta sin formulario; (c) copia PWA en cache.
+- Anadido vercel.json (cabeceras de seguridad, sw.js sin cache) y engines node>=20; README con pasos de Vercel. package-lock.json ahora SE INCLUYE en el zip (recomendado subirlo al repo).
+
+## 2026-11-06 FIX login: dominio del correo interno
+- BUG mio: el dominio por defecto example.com NO sirve: Supabase devuelve email_address_invalid ("Example and test domains are currently not supported", segun su doc de codigos de error) y valida MX. Sintoma: "No se pudo completar la operacion" al crear usuario.
+- Arreglo: AUTH_DOMAIN por defecto = gmail.com (tiene MX, no esta bloqueado); configurable con VITE_AUTH_EMAIL_DOMAIN (ideal: dominio propio con MX). No se envia correo (Confirm email desactivado). src/lib/authErrors.ts traduce codigos de error de Supabase y muestra "Detalle tecnico" en errores no triviales. Tests: 40. Version 0.3.1.
+- Si sigue fallando: leer el "Detalle tecnico" de la pantalla Cuenta y mirar Supabase > Authentication > Logs.

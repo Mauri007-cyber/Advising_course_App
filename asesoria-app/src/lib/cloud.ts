@@ -2,7 +2,8 @@ import { useSyncExternalStore } from "react";
 import type { SupabaseClient } from "@supabase/supabase-js";
 import { getState, sanitizeState, setState, subscribe } from "./store";
 import { mergeStates } from "./merge";
-import { checkCredentials, emailToUsername, usernameToEmail } from "./username";
+import { explainAuthError } from "./authErrors";
+import { AUTH_DOMAIN, checkCredentials, emailToUsername, usernameToEmail } from "./username";
 
 const URL = import.meta.env.VITE_SUPABASE_URL as string | undefined;
 const KEY = import.meta.env.VITE_SUPABASE_ANON_KEY as string | undefined;
@@ -90,31 +91,18 @@ export async function initCloud() {
   addEventListener("online", () => void syncNow());
 }
 
-const friendly = (m: string): string =>
-  /invalid login/i.test(m)
-    ? "Usuario o contraseña incorrectos."
-    : /already registered|already been registered/i.test(m)
-      ? "Ese nombre de usuario ya existe."
-      : /signups? (not allowed|disabled)|not allowed for this instance/i.test(m)
-        ? "El registro de usuarios nuevos está desactivado en este proyecto."
-        : /rate limit|too many/i.test(m)
-          ? "Demasiados intentos. Espera unos minutos."
-          : /password/i.test(m)
-            ? "La contraseña no cumple los requisitos del proyecto."
-            : "No se pudo completar la operación.";
-
 export async function signIn(username: string, password: string): Promise<string | null> {
   const bad = checkCredentials(username, password);
   if (bad) return bad;
   const { error } = await (await getClient()).auth.signInWithPassword({ email: usernameToEmail(username), password });
-  return error ? friendly(error.message) : null;
+  return error ? explainAuthError(error, AUTH_DOMAIN) : null;
 }
 
 export async function signUp(username: string, password: string): Promise<string | null> {
   const bad = checkCredentials(username, password);
   if (bad) return bad;
   const { data, error } = await (await getClient()).auth.signUp({ email: usernameToEmail(username), password });
-  if (error) return friendly(error.message);
+  if (error) return explainAuthError(error, AUTH_DOMAIN);
   return data.session
     ? null
     : "El proyecto exige confirmar el correo. Desactiva «Confirm email» en Supabase (Authentication, Providers, Email) para usar solo usuario y contraseña.";

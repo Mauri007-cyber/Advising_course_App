@@ -1,11 +1,11 @@
-const DOMAIN = (import.meta.env.VITE_AUTH_EMAIL_DOMAIN as string | undefined) || "example.com";
+export const AUTH_DOMAIN = (import.meta.env.VITE_AUTH_EMAIL_DOMAIN as string | undefined)?.trim() || "gmail.com";
 
 export const USERNAME_RE = /^[a-z0-9][a-z0-9._-]{2,23}$/;
 export const PASSWORD_MIN = 8;
 export const PASSWORD_MAX = 72;
 
 export const normalizeUsername = (s: string) => s.trim().toLowerCase();
-export const usernameToEmail = (u: string) => `${normalizeUsername(u)}@${DOMAIN}`;
+export const usernameToEmail = (u: string) => `${normalizeUsername(u)}@${AUTH_DOMAIN}`;
 export const emailToUsername = (email: string) => email.split("@")[0];
 
 export function checkCredentials(username: string, password: string): string | null {
