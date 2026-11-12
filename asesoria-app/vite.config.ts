@@ -22,9 +22,12 @@ const cspPlugin = (api: string): Plugin => ({
 });
 
 export default defineConfig(({ mode }) => {
-  const url = loadEnv(mode, ".", "VITE_").VITE_SUPABASE_URL;
+  const env = loadEnv(mode, ".", "");
+  const url = env.VITE_SUPABASE_URL;
+  const allowedHosts = (env.ALLOWED_HOSTS ?? "").split(",").map((h) => h.trim()).filter(Boolean);
   return {
     base: "./",
+    server: { allowedHosts },
     plugins: [react(), cspPlugin(url ? new URL(url).origin : "")],
     define: {
       __APP_VERSION__: JSON.stringify(pkg.version),

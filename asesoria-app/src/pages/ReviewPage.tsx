@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { questionById } from "../data/content";
+import { findLesson, findModule, isReleased } from "../data/modules";
 import { hasAnswer, isCorrect, type Answer } from "../data/questions";
 import { href } from "../lib/router";
 import { useStore } from "../lib/store";
@@ -10,9 +11,15 @@ import { Progress } from "../components/Progress";
 
 const SESSION = 10;
 
+const isAvailable = (id: string) => {
+  const lesson = findLesson(questionById[id]?.lessonId ?? "");
+  const mod = lesson && findModule(lesson.moduleId);
+  return Boolean(mod && isReleased(mod));
+};
+
 export function ReviewPage() {
   const s = useStore();
-  const [ids] = useState(() => dueIds(s.srs, dayKey()).filter((id) => questionById[id]).slice(0, SESSION));
+  const [ids] = useState(() => dueIds(s.srs, dayKey()).filter(isAvailable).slice(0, SESSION));
   const [i, setI] = useState(0);
   const [answer, setAnswer] = useState<Answer>();
   const [checked, setChecked] = useState(false);

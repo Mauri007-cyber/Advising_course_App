@@ -18,7 +18,8 @@ describe("isCorrect", () => {
     expect(isCorrect(tf, false)).toBe(true);
     expect(isCorrect(tf, undefined)).toBe(false);
     expect(isCorrect(num, "1200")).toBe(true);
-    expect(isCorrect(num, "1.200,5")).toBe(false);
+    expect(isCorrect(num, "1.200,5")).toBe(true);
+    expect(isCorrect(num, "1.200")).toBe(true);
     expect(isCorrect(num, "1200,4")).toBe(true);
     expect(isCorrect(num, "abc")).toBe(false);
     expect(isCorrect(num, "")).toBe(false);
@@ -86,6 +87,13 @@ describe("store e importacion", () => {
     expect(importJson(JSON.stringify({ v: 9 }))).toBe(false);
     expect(sanitizeState(JSON.parse('{"v":2,"done":{"__proto__":1,"a":5,"b":"x"}}'))?.done).toEqual({ a: 5 });
     expect(sanitizeState({ v: 2, theme: "rojo", size: "gigante", xp: -5 })).toMatchObject({ theme: "auto", size: "l", xp: 0 });
+  });
+
+  it("la marca de tiempo avanza al guardar y el borrado la deja al día", () => {
+    resetAll();
+    expect(getState().modified).toBeGreaterThan(0);
+    setState({ ...getState(), modified: 1 });
+    expect(getState().modified).toBeGreaterThan(1);
   });
 
   it("migra v1 y hace ida y vuelta", () => {

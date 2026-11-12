@@ -26,15 +26,15 @@ npm run preview
 
 ## Cuenta y sincronización (Supabase, opcional)
 
-Sin configuración, todo funciona en el dispositivo (localStorage). Para guardar el progreso en la nube con usuario y contraseña, sin correo:
+Sin configuración, todo funciona en el dispositivo (localStorage). Para guardar el progreso en la nube con correo, nombre de usuario y contraseña:
 
 1. Crea un proyecto en Supabase.
-2. En SQL Editor, ejecuta `supabase/schema.sql` (tabla `progress` con seguridad por filas).
-3. En Authentication, Providers, Email: desactiva **Confirm email**. Sin esto el registro no devuelve sesión.
-4. Copia `.env.example` a `.env` y rellena la URL y la clave anónima. Esa clave es pública por diseño; la protección está en las políticas RLS.
-5. Cuando hayas creado tu usuario, desactiva el registro de usuarios nuevos en los ajustes de Auth para que nadie más pueda crear cuentas.
+2. En SQL Editor, ejecuta `supabase/schema.sql` (tablas `progress` y `profiles` con seguridad por filas, y las funciones que permiten entrar con el nombre de usuario). Se puede ejecutar más de una vez.
+3. En Authentication, Providers, Email: desactiva **Confirm email**. Sin esto el registro no devuelve sesión y la cuenta no queda lista al momento.
+4. Copia `.env.example` a `.env` y rellena `VITE_SUPABASE_URL` y `VITE_SUPABASE_ANON_KEY`. Esa clave es pública por diseño; la protección está en las políticas RLS.
+5. Cuando tengas tus cuentas creadas, desactiva el registro de usuarios nuevos en los ajustes de Auth para que nadie más pueda crear cuentas.
 
-Cómo funciona: el nombre de usuario se convierte en un correo interno (`usuario@VITE_AUTH_EMAIL_DOMAIN`, por defecto `gmail.com`). No se envía ningún correo. Supabase rechaza los dominios de prueba (`example.com`, `test.com`…) y los que no tienen registros MX, así que usa uno real; lo ideal es un dominio propio. Consecuencia: no hay recuperación de contraseña. Exporta copias del progreso desde Ajustes.
+Cómo funciona: al crear la cuenta se guardan correo, nombre de usuario y contraseña. Se puede entrar con el correo o con el nombre de usuario. El nombre vive en la tabla `profiles`, con una política que solo deja leer el perfil propio; una función con permisos elevados traduce nombre → correo para el acceso, sin abrir la lista de perfiles. Si cambias de esquema de usuarios (por ejemplo, al pasar de la versión anterior con correo interno), borra los usuarios antiguos en Authentication → Users: su perfil y su progreso se borran en cascada. La recuperación de contraseña depende del correo de Supabase: configúralo en Authentication si la necesitas, y exporta copias del progreso desde Ajustes.
 
 ## Si no ves los cambios
 

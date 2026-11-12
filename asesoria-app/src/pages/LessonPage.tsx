@@ -108,6 +108,7 @@ function LessonView({ id }: { id: string }) {
   const done = Boolean(s.done[id]);
   const reviewing = (s.review[mod.id] ?? []).includes(id);
   const next = mod.lessons[mod.lessons.findIndex((l) => l.id === id) + 1];
+  const closesModule = mod.lessons.every((l) => l.id === id || s.done[l.id]);
 
   return (
     <div className={`mod-${mod.id}`}>
@@ -138,7 +139,7 @@ function LessonView({ id }: { id: string }) {
             {!next && <a className="btn primary" href={href(`/m/${mod.id}`)}>Volver al módulo</a>}
           </>
         ) : (
-          <button className="primary" onClick={() => completeLesson(id)}>Marcar como completada (+20 XP)</button>
+          <button className="primary" onClick={() => completeLesson(id)}>Marcar como completada (+{closesModule ? 50 : 20} XP)</button>
         )}
       </div>
     </div>

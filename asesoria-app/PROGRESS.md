@@ -192,3 +192,10 @@ Otras unidades del ciclo (no investigadas aun): Gestion de recursos humanos, Ges
 - BUG mio: el dominio por defecto example.com NO sirve: Supabase devuelve email_address_invalid ("Example and test domains are currently not supported", segun su doc de codigos de error) y valida MX. Sintoma: "No se pudo completar la operacion" al crear usuario.
 - Arreglo: AUTH_DOMAIN por defecto = gmail.com (tiene MX, no esta bloqueado); configurable con VITE_AUTH_EMAIL_DOMAIN (ideal: dominio propio con MX). No se envia correo (Confirm email desactivado). src/lib/authErrors.ts traduce codigos de error de Supabase y muestra "Detalle tecnico" en errores no triviales. Tests: 40. Version 0.3.1.
 - Si sigue fallando: leer el "Detalle tecnico" de la pantalla Cuenta y mirar Supabase > Authentication > Logs.
+
+## 2026-11-12: login con correo + usuario, arreglos y esquema nuevo
+- Auth REHECHA: alta con correo real + nombre de usuario + contraseña; entrada con correo O usuario. Ya NO hay correo sintético ni VITE_AUTH_EMAIL_DOMAIN (eliminar esa variable de Vercel si existe).
+- Supabase: ejecutar `supabase/schema.sql` entero (idempotente). Crea `profiles` (username único, RLS solo perfil propio) y las funciones `email_for_username` / `username_taken` (security definer). Requiere desactivar Confirm email y borrar los usuarios antiguos (cascada borra `progress` y `profiles`).
+- Arreglados: `setState` ya no conserva un `modified` viejo (rompía mergeStates); «Borrar progreso» borra también la copia en la nube (`clearCloud`) y no se puede deshacer al sincronizar; `initCloud` con try/catch; sw.js no cachea respuestas de error y responde 503 sin red; schema idempotente; ruta desconocida → NotFound; parseNum admite `1.200,50`; exportar progreso no revoca el blob antes de tiempo; repaso filtra lecciones publicadas; etiqueta de XP correcta (+50 al cerrar módulo); `.pyc` eliminado.
+- Añadidos `.gitignore` y `.env.example` (el README ya los citaba y no existían). El `.env` con URL y clave anónima sigue en el historial (commit 5c070d1).
+- Tests: 42. `npm run build` ejecuta typecheck + tests.

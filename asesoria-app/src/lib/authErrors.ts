@@ -5,23 +5,23 @@ export interface AuthLikeError {
   name?: string;
 }
 
-export function explainAuthError(err: AuthLikeError, domain: string): string {
+export function explainAuthError(err: AuthLikeError): string {
   const code = err.code ?? "";
   const msg = err.message ?? "";
   let text: string;
   let detail = true;
 
   if (code === "email_address_invalid" || /email address .* is invalid/i.test(msg)) {
-    text = `Supabase rechaza el dominio del correo interno (${domain}). Define VITE_AUTH_EMAIL_DOMAIN con un dominio que tenga registros de correo (MX) y que no sea de prueba, como example.com o test.com, y vuelve a desplegar.`;
+    text = "Supabase rechaza ese correo electrónico. Usa un correo real y revisa que esté bien escrito.";
   } else if (code === "email_provider_disabled" || /email (logins|signups) are disabled|email provider.*disabled/i.test(msg)) {
-    text = "El acceso con email está desactivado en Supabase. Actívalo en Authentication, Providers, Email.";
+    text = "El acceso con correo está desactivado en Supabase. Actívalo en Authentication, Providers, Email.";
   } else if (code === "signup_disabled" || /signups? (not allowed|disabled)/i.test(msg)) {
     text = "El registro de usuarios nuevos está desactivado en este proyecto.";
   } else if (code === "invalid_credentials" || /invalid login/i.test(msg)) {
-    text = "Usuario o contraseña incorrectos.";
+    text = "Correo, usuario o contraseña incorrectos.";
     detail = false;
   } else if (code === "user_already_exists" || /already registered|already been registered/i.test(msg)) {
-    text = "Ese nombre de usuario ya existe.";
+    text = "Ese correo ya tiene una cuenta. Entra con tu correo o tu nombre de usuario.";
     detail = false;
   } else if (code === "weak_password" || /password/i.test(msg)) {
     text = "La contraseña no cumple los requisitos del proyecto.";

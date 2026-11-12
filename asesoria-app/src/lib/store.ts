@@ -133,7 +133,7 @@ export const subscribe = (fn: () => void) => {
 };
 
 export function setState(patch: Partial<State>) {
-  state = { ...state, modified: Date.now(), ...patch };
+  state = { ...state, ...patch, modified: Date.now() };
   try {
     localStorage.setItem(KEY, JSON.stringify(state));
   } catch {

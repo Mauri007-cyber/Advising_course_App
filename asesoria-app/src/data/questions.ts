@@ -17,7 +17,14 @@ export type Question = Base &
 export type Answer = number | boolean | string | undefined;
 
 export const hasAnswer = (a: Answer) => a !== undefined && a !== "";
-export const parseNum = (v: string) => Number(v.trim().replace(",", "."));
+export function parseNum(v: string): number {
+  const s = v
+    .trim()
+    .replace(/[\s\u00a0]/g, "")
+    .replace(/\.(?=\d{3}(?:\D|$))/g, "")
+    .replace(",", ".");
+  return s === "" ? Number.NaN : Number(s);
+}
 
 export function isCorrect(q: Question, a: Answer): boolean {
   if (!hasAnswer(a)) return false;

@@ -1,4 +1,4 @@
-const CACHE = "asesoria-v3";
+const CACHE = "asesoria-v4";
 const SHELL = ["./", "./index.html", "./manifest.webmanifest", "./icon-192.png", "./icon-512.png"];
 
 self.addEventListener("install", (e) => {
@@ -15,6 +15,9 @@ self.addEventListener("activate", (e) => {
   );
 });
 
+const offline = () =>
+  new Response("Sin conexión", { status: 503, headers: { "Content-Type": "text/plain; charset=utf-8" } });
+
 self.addEventListener("fetch", (e) => {
   const req = e.request;
   if (req.method !== "GET" || new URL(req.url).origin !== location.origin) return;
@@ -23,11 +26,18 @@ self.addEventListener("fetch", (e) => {
     e.respondWith(
       fetch(req)
         .then((res) => {
-          const copy = res.clone();
-          caches.open(CACHE).then((c) => c.put("./index.html", copy));
+          if (res.ok) {
+            const copy = res.clone();
+            caches.open(CACHE).then((c) => c.put("./index.html", copy));
+          }
           return res;
         })
-        .catch(() => caches.match("./index.html"))
+        .catch(() =>
+          caches
+            .match("./index.html")
+            .then((hit) => hit || caches.match("./"))
+            .then((hit) => hit || offline())
+        )
     );
     return;
   }
@@ -42,7 +52,7 @@ self.addEventListener("fetch", (e) => {
           }
           return res;
         })
-        .catch(() => hit);
+        .catch(() => hit || offline());
       return hit || net;
     })
   );

@@ -1,6 +1,6 @@
 import { useState, type ChangeEvent } from "react";
 import { CURRENT_RELEASE, formatHours, releasedMinutes } from "../data/modules";
-import { cloudEnabled } from "../lib/cloud";
+import { clearCloud, cloudEnabled } from "../lib/cloud";
 import { forceRefresh } from "../lib/pwa";
 import { exportJson, importJson, resetAll, setState, useStore, type FontSize, type Theme } from "../lib/store";
 
@@ -17,7 +17,8 @@ export function Settings() {
     a.href = url;
     a.download = `progreso-${new Date().toISOString().slice(0, 10)}.json`;
     a.click();
-    URL.revokeObjectURL(url);
+    a.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
   };
 
   const importFile = async (e: ChangeEvent<HTMLInputElement>) => {
@@ -27,11 +28,15 @@ export function Settings() {
     e.target.value = "";
   };
 
-  const reset = () => {
-    if (confirm("Se borrará todo el progreso. ¿Continuar?")) {
-      resetAll();
-      setMsg("Progreso borrado.");
+  const reset = async () => {
+    if (!confirm("Se borrará todo el progreso, también la copia en la nube. ¿Continuar?")) return;
+    setMsg("Borrando…");
+    if (!(await clearCloud())) {
+      setMsg("No se pudo borrar la copia en la nube. Revisa la conexión e inténtalo de nuevo.");
+      return;
     }
+    resetAll();
+    setMsg("Progreso borrado.");
   };
 
   return (
@@ -67,7 +72,7 @@ export function Settings() {
             Importar progreso
             <input type="file" accept="application/json" onChange={importFile} />
           </label>
-          <button className="danger" onClick={reset}>Borrar progreso</button>
+          <button className="danger" onClick={() => void reset()}>Borrar progreso</button>
         </div>
         <p role="status">{msg}</p>
       </fieldset>

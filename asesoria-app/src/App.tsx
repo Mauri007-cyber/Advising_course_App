@@ -10,6 +10,7 @@ import { ReviewPage } from "./pages/ReviewPage";
 import { AccountPage } from "./pages/AccountPage";
 import { Tools } from "./pages/Tools";
 import { Settings } from "./pages/Settings";
+import { NotFound } from "./components/NotFound";
 
 export function App() {
   const route = useRoute();
@@ -21,8 +22,9 @@ export function App() {
     main.current?.focus();
   }, [route]);
 
-  let page = <Dashboard />;
-  if (kind === "m") page = <ModulePage id={id} />;
+  let page = <NotFound />;
+  if (kind === "") page = <Dashboard />;
+  else if (kind === "m") page = <ModulePage id={id} />;
   else if (kind === "l") page = <LessonPage id={id} />;
   else if (kind === "e") page = <ExamPage key={id} id={id} />;
   else if (kind === "logros") page = <Achievements />;
